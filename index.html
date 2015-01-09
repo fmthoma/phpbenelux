@@ -89,11 +89,46 @@
     </section>
 </section>
 
-<section data-title="Git">
+<section data-title="VirtualMachine">
     <section>
+        Login: vagrant/vagrant<br>
+        Jenkins running on localhost:8080
+        Browser: Chromium
+        Apache running on localhost:80
+
+        git: ssh
         if not already under version control, commit the whole project
 
 
+    </section>
+
+    <section>
+        <ul>
+            <li>Start Virtual Box</li>
+            <li>in terminal: git clone</li>
+            <li>open PHPStorm, File->Open, /home/vagrant/foo</li>
+            <li>have a first look, run the app in the terminal with
+                <pre><code>
+                    cd foo; php -s foo;
+                </code></pre>
+                , check on localhost:80
+            </li>
+            <li>you should be able to add entries to the database</li>
+        </ul>
+    </section>
+</section>
+
+<section data-title="Phing">
+    <section>phing</section>
+
+</section>
+
+<section data-title="Build Pipeline">
+    <section>
+        <h2>Jenkins</h2>
+
+        <img src="img/JenkinsLogo.png">
+        Check your build after every push
     </section>
 </section>
 
@@ -124,12 +159,18 @@
                 "require": {
                 "apache/log4php": "~2.3"
                 }</code></pre>
-        <p>When you run <code>composer install</code> in the same directory, it will download the required dependencies.
+        <p>When you run <code>composer install</code> in the same directory, it will download the required
+            dependencies.
             It will also generate a <code>composer.lock</code> file, this file contains the exact versions that were
             downloaded.</p>
 
         <p>commit both .json and .lock file into your repository</p>
     </section>
+
+    <section>
+        extract libraries commmited into code and require them with composer instead.
+    </section>
+
 
     <section>
         <h2>Autoloading, PSR</h2>
@@ -150,26 +191,9 @@
     </section>
 </section>
 
-<section data-title="Phing">
-    <section>phing</section>
-
-</section>
-
-<section data-title="Build Pipeline">
-    <section>
-        <h2>Jenkins</h2>
-
-        <img src="img/JenkinsLogo.png">
-        Check your build after every push
-    </section>
-</section>
 
 <section data-title="PSR">
     <section>psr</section>
-
-</section>
-
-
 </section>
 
 <section data-title="Symfony 2">
@@ -212,6 +236,18 @@
 
     <section>
         write a unit test for testing parsing hash symbol
+    </section>
+
+    <section>
+        Refactoring with IDE support, coarse first steps to get it at least a little bit under control
+        <ul>
+            <li>remove global variables</li>
+            <li>use IDE->refactor->extractMethod to break code in smaller chuncks, so you can see where variables are
+                being used and restructure accordingly
+            </li>
+            <li>when extracting small enough methods, write a simple or several unit test for it</li>
+            <li>getting more and more to local variables</li>
+        </ul>
     </section>
 </section>
 
