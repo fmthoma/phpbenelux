@@ -109,9 +109,10 @@
             <li>open PHPStorm, File->Open, /home/vagrant/foo</li>
             <li>have a first look, run the app in the terminal with
                 <pre><code>
-                    cd foo; php -s foo;
+                    git clone ssh://git@localhost/workshop
+                    cd workshop; php -s;
                 </code></pre>
-                , check on localhost:80
+                verify that the server is running Chromium/firefox: localhost:80
             </li>
             <li>you should be able to add entries to the database</li>
         </ul>
@@ -199,10 +200,25 @@
 <section data-title="Symfony 2">
     <section>
         <img src="img/Symfony.png">
-        Create new Symfony App
+        Create new Symfony2 App
     </section>
 
     <section>Render index.html by Symfony controller</section>
+
+    <section>
+        <h2>Symfony Controller Test</h2>
+        Make a request;
+        Test the response;
+        Click on a link or submit a form;
+        Test the response;
+        Rinse and repeat.
+
+        <img src="img/WebTestCase.png">
+    </section>
+
+    <section>
+        add integration tests to build pipeline
+    </section>
 </section>
 
 <section data-title="PHPUnit">
@@ -238,6 +254,7 @@
         write a unit test for testing parsing hash symbol
     </section>
 
+
     <section>
         Refactoring with IDE support, coarse first steps to get it at least a little bit under control
         <ul>
@@ -252,6 +269,12 @@
 </section>
 
 <section data-title="Dependency Injection">
+    <section> for many standard libraries, there is a Symfony bundle, we use Monolog instead of Log4Php.
+    <br> by using symphony container dependency injection is easy as pie.
+        <br>With Logger passed in as dependency, we could write tests that mock it ... just that testing the logger ist not so useful right now, but we will show you with
+
+
+    </section>
     <section>Dependency Injection</section>
     <section>Symfony DI</section>
 </section>
