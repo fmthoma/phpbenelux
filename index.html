@@ -48,7 +48,7 @@
 
 <div class="i18n">
     <!-- FIXME: hier wenn gewünscht die Überschrift der Abschnitts-Übersichtseite ändern -->
-    <span class="section-overview">Übersicht</span>
+    <span class="section-overview">Overview</span>
 </div>
 
 <!-- Titel-Slide -->
@@ -65,7 +65,7 @@
 </section>
 
 
-<section data-title="Overview">
+<section data-title="Introduction">
 
     <section>
         <h3> Prepared Legacy Application which we will use to demonstrate </h3>
@@ -91,7 +91,9 @@
 
 <section data-title="Git">
     <section>
-        if not already under version control, commit the whole prod
+        if not already under version control, commit the whole project
+
+
     </section>
 </section>
 
@@ -202,304 +204,301 @@
         <img src="img/unitTestExample.png">
         (https://phpunit.de/getting-started.html)
     </section>
+</section>
 
 
-    <section data-title="Make it testable">
-        <section>Make the application testable by separating logic from view</section>
-
-        <section>
-            write a unit test for testing parsing hash symbol
-        </section>
-    </section>
-
-    <section data-title="Dependency Injection">
-        <section>Dependency Injection</section>
-        <section>Symfony DI</section>
-    </section>
-
-    <section data-title="ORM">
-        <section>orm</section>
-
-    </section>
+<section data-title="Make it testable">
+    <section>Make the application testable by separating logic from view</section>
 
     <section>
-        <h2>Twig</h2>
-
-        <h2>More unit tests</h2>
-
-        <h2>integration tests, Phantom.js</h2>
+        write a unit test for testing parsing hash symbol
     </section>
+</section>
 
-    <!-- Inhalt ab hier, für eigene Präsentationen einfach löschen -->
-    <!-- Gibt man data-title="foo" an, wird eine Übersichtseite mit Links hier in die Präsentation eingefügt -->
-    <section data-title="Einführung">
-        <section>
-            <h2>Worum geht's?</h2>
-            <ul>
-                <li><a href="http://lab.hakim.se/reveal-js/#/">Reveal.js</a>-Präsentationen bei TNG einheitlicher
-                    gestalten
-                </li>
-                <li>Hacks^H^H^H^H^HClevere Tricks verschiedener TNGler konsolidieren</li>
-                <li>Look &amp; Feel von Reveal an TNG angleichen</li>
-                <li>Vorlage für eigene Präsentationen</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Was ist anders als beim normalen Reveal-Download?</h2>
-            <ol>
-                <li>Style: TNG-ähnliche Farben &amp; Schriften, Logo, Animationen</li>
-                <li>Auf <a href="http://requirejs.org">RequireJS</a> umgestellt, um das Reveal.js-Plumbing vom Content
-                    zu
-                    trennen
-                    <div>
-                        <span style="color: red">Vorsicht!</span> Ein Webserver ist nötig, z.B.
-                        <pre><code class="shell">$ python -m SimpleHTTPServer 9999</code></pre>
-                    </div>
-                </li>
-                <li>Zusätzliche Plugins mitgeliefert, die sich bewährt haben:
-                    <ul class="no-burn">
-                        <li><a href="https://github.com/theone1984/reveal-animate">Animate-Plugin</a>, um aus SVGs
-                            animierte
-                            Bilder zu erstellen
-                        </li>
-                        <li><a href="https://github.com/ericweikl/revealjs-charred">Charred Trail Plugin</a>, um den
-                            aktuellen Bullet-Point hervorzuheben, oder Source-Code zu highlighten
-                        </li>
-                        <li><a href="https://github.com/theone1984/reveal-sectiontitle">Section Title Plugin</a> für
-                            optionale Übersichtsseiten
-                        </li>
-                        <li>Erweitertes Notes-Plugin für die SpeakerView-Darstellung</li>
-                    </ul>
-                </li>
-            </ol>
-        </section>
-    </section>
+<section data-title="Dependency Injection">
+    <section>Dependency Injection</section>
+    <section>Symfony DI</section>
+</section>
 
-    <section data-title="Beispiele">
-        <section>
-            <h1>Einfache Elemente</h1>
-        </section>
+<section data-title="ORM">
+    <section>orm</section>
 
-        <section>
-            <h2>Dies ist eine Überschrift</h2>
+</section>
 
-            <p style="margin-top: 50px;">Ein Element in der Präsentation</p>
+<section>
+    <h2>Twig</h2>
 
-            <p class="not-printed" style="margin-top: 30px;">Dieses Element wird in der Druckansicht nicht angezeigt</p>
+    <h2>More unit tests</h2>
 
-            <p style="margin-top: 30px;">Dieses Element wird dagegen wieder gedruckt</p>
-        </section>
+    <h2>integration tests, Phantom.js</h2>
+</section>
 
-        <section>
-            <h2>Präsentation in HTML</h2>
-
-            <h3>Level-3-Überschrift</h3>
-
-            <p>Dieser Text wurde in HTML geschrieben</p>
+<!-- Inhalt ab hier, für eigene Präsentationen einfach löschen -->
+<!-- Gibt man data-title="foo" an, wird eine Übersichtseite mit Links hier in die Präsentation eingefügt -->
+<section>
+    <h2>Worum geht's?</h2>
+    <ul>
+        <li><a href="http://lab.hakim.se/reveal-js/#/">Reveal.js</a>-Präsentationen bei TNG einheitlicher
+            gestalten
+        </li>
+        <li>Hacks^H^H^H^H^HClevere Tricks verschiedener TNGler konsolidieren</li>
+        <li>Look &amp; Feel von Reveal an TNG angleichen</li>
+        <li>Vorlage für eigene Präsentationen</li>
+    </ul>
+</section>
+<section>
+    <h2>Was ist anders als beim normalen Reveal-Download?</h2>
+    <ol>
+        <li>Style: TNG-ähnliche Farben &amp; Schriften, Logo, Animationen</li>
+        <li>Auf <a href="http://requirejs.org">RequireJS</a> umgestellt, um das Reveal.js-Plumbing vom Content
+            zu
+            trennen
+            <div>
+                <span style="color: red">Vorsicht!</span> Ein Webserver ist nötig, z.B.
+                <pre><code class="shell">$ python -m SimpleHTTPServer 9999</code></pre>
+            </div>
+        </li>
+        <li>Zusätzliche Plugins mitgeliefert, die sich bewährt haben:
             <ul class="no-burn">
-                <li>Listenpunkt 1</li>
-                <li>Listenpunkt 2</li>
+                <li><a href="https://github.com/theone1984/reveal-animate">Animate-Plugin</a>, um aus SVGs
+                    animierte
+                    Bilder zu erstellen
+                </li>
+                <li><a href="https://github.com/ericweikl/revealjs-charred">Charred Trail Plugin</a>, um den
+                    aktuellen Bullet-Point hervorzuheben, oder Source-Code zu highlighten
+                </li>
+                <li><a href="https://github.com/theone1984/reveal-sectiontitle">Section Title Plugin</a> für
+                    optionale Übersichtsseiten
+                </li>
+                <li>Erweitertes Notes-Plugin für die SpeakerView-Darstellung</li>
             </ul>
+        </li>
+    </ol>
+</section>
+</section>
+
+<section>
+    <h1>Einfache Elemente</h1>
+</section>
+
+<section>
+    <h2>Dies ist eine Überschrift</h2>
+
+    <p style="margin-top: 50px;">Ein Element in der Präsentation</p>
+
+    <p class="not-printed" style="margin-top: 30px;">Dieses Element wird in der Druckansicht nicht angezeigt</p>
+
+    <p style="margin-top: 30px;">Dieses Element wird dagegen wieder gedruckt</p>
+</section>
+
+<section>
+    <h2>Präsentation in HTML</h2>
+
+    <h3>Level-3-Überschrift</h3>
+
+    <p>Dieser Text wurde in HTML geschrieben</p>
+    <ul class="no-burn">
+        <li>Listenpunkt 1</li>
+        <li>Listenpunkt 2</li>
+    </ul>
 
     <pre><code class="sql">-- Code kann auch geschrieben werden
         SELECT *
         FROM Table
         WHERE key='value';</code></pre>
-        </section>
+</section>
 
-        <section data-markdown>
-            <script type="text/template">
-                ## Präsentation in Markdown
-                ### Level-3-Überschrift
+<section data-markdown>
+    <script type="text/template">
+        ## Präsentation in Markdown
+        ### Level-3-Überschrift
 
-                Dieser Text wurde in Markdown geschrieben
+        Dieser Text wurde in Markdown geschrieben
 
-                * Listenpunkt 1
-                * Listenpunkt 2
+        * Listenpunkt 1
+        * Listenpunkt 2
 
-                ```sql
-                -- Code kann auch geschrieben werden
-                SELECT *
-                FROM Table
-                WHERE key='value';
-                ```
-            </script>
-        </section>
+        ```sql
+        -- Code kann auch geschrieben werden
+        SELECT *
+        FROM Table
+        WHERE key='value';
+        ```
+    </script>
+</section>
 
-        <section>
-            <h1>Bullet Points</h1>
-            <h4 class="fragment">(bitte sparsam verwenden ;-))</h4>
-        </section>
+<section>
+    <h1>Bullet Points</h1>
+    <h4 class="fragment">(bitte sparsam verwenden ;-))</h4>
+</section>
 
-        <section>
-            <h2>Bullet Points</h2>
+<section>
+    <h2>Bullet Points</h2>
 
-            <h3>Standardverhalten</h3>
-            <ul>
-                <li>Standardmäßig...</li>
-                <li>...werden Punkte nach und nach eingeblendet...</li>
-                <li data-fragment-index="4">...die Reihenfolge ist konfigurierbar</li>
-                <li>...wobei alte Elemente verblassen...</li>
-            </ul>
-        </section>
+    <h3>Standardverhalten</h3>
+    <ul>
+        <li>Standardmäßig...</li>
+        <li>...werden Punkte nach und nach eingeblendet...</li>
+        <li data-fragment-index="4">...die Reihenfolge ist konfigurierbar</li>
+        <li>...wobei alte Elemente verblassen...</li>
+    </ul>
+</section>
 
-        <section>
-            <h2>Bullet Points</h2>
+<section>
+    <h2>Bullet Points</h2>
 
-            <h3>(statisch)</h3>
-            <ul class="no-burn">
-                <li>Diese Elemente...</li>
-                <li>...sind immer sichtbar</li>
-            </ul>
-            <hr>
-            <ul>
-                <li class="no-burn">Diese Elemente...</li>
-                <li class="no-burn">...verblassen nie</li>
-                <li class="no-burn">egal wie viele kommen</li>
-                <li class="no-burn">Beides wird über CSS-Klassen gesteuert</li>
-            </ul>
-        </section>
+    <h3>(statisch)</h3>
+    <ul class="no-burn">
+        <li>Diese Elemente...</li>
+        <li>...sind immer sichtbar</li>
+    </ul>
+    <hr>
+    <ul>
+        <li class="no-burn">Diese Elemente...</li>
+        <li class="no-burn">...verblassen nie</li>
+        <li class="no-burn">egal wie viele kommen</li>
+        <li class="no-burn">Beides wird über CSS-Klassen gesteuert</li>
+    </ul>
+</section>
 
-        <section>
-            <h2>Überblick</h2>
+<section>
+    <h2>Überblick</h2>
 
-            <p>Alle Sections auf oberster Ebene, <br/>die ein Attribut, "data-title" besitzen:</p>
-            <ul>
-                <li>Erhalten eine Übersichtsseite (wo stehen wir gerade?)</li>
-                <li>Werden mit ihrem Titel auf der Übersichtsseite angezeigt</li>
-            </ul>
-        </section>
+    <p>Alle Sections auf oberster Ebene, <br/>die ein Attribut, "data-title" besitzen:</p>
+    <ul>
+        <li>Erhalten eine Übersichtsseite (wo stehen wir gerade?)</li>
+        <li>Werden mit ihrem Titel auf der Übersichtsseite angezeigt</li>
+    </ul>
+</section>
 
-        <section>
-            <h1>Source Code Focus</h1>
-        </section>
+<section>
+    <h1>Source Code Focus</h1>
+</section>
 
-        <section>
-            <p>Bei Source-Code Beispielen kann man die Stelle, über die man gerade spricht, fokussieren:</p>
+<section>
+    <p>Bei Source-Code Beispielen kann man die Stelle, über die man gerade spricht, fokussieren:</p>
     <pre><code class="java" data-noescape>
         public ^1^class^^ HelloWorld {
         public static ^4^void^^ ^2^main^^(^3^String[] args^^) {
         ^5^System.out.println("Hello World!");^^
         }
         }</code></pre>
-        </section>
+</section>
 
-        <section>
-            <h1>Animationen</h1>
-        </section>
+<section>
+    <h1>Animationen</h1>
+</section>
 
-        <section>
-            <h2>Animierte Elemente</h2>
+<section>
+    <h2>Animierte Elemente</h2>
 
-            <div class="animated-html" style="height: 600px;">
-                <animation data-duration="500">
-                    <animate data-id="box" data-property="opacity" data-value="1"></animate>
-                </animation>
-                <animation data-duration="500">
-                    <animate data-id="box" data-property="top" data-value="400px"></animate>
-                    <animate data-id="box" data-property="left" data-value="400px"></animate>
-                </animation>
+    <div class="animated-html" style="height: 600px;">
+        <animation data-duration="500">
+            <animate data-id="box" data-property="opacity" data-value="1"></animate>
+        </animation>
+        <animation data-duration="500">
+            <animate data-id="box" data-property="top" data-value="400px"></animate>
+            <animate data-id="box" data-property="left" data-value="400px"></animate>
+        </animation>
 
-                <div id="box"
-                     style="position: absolute; left: 200px; top: 200px; width: 400px; border: 1px solid black; opacity: 0;">
-                    Dieser Text wird sich bewegen
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Animierte Elemente</h2>
-
-            <p>SVG</p>
-
-            <div class="svg animated-svg" src="img/test/tng.svg"
-                 style="margin-left: 320px; margin-top: 30px; width: 400px; height: 200px;">
-                <initial>
-                    <state data-id="TNG" data-property="opacity" data-value="0"></state>
-                    <state data-id="technology-consulting" data-property="opacity" data-value="0"></state>
-                </initial>
-                <animation data-duration="500">
-                    <animate data-id="TNG" data-property="opacity" data-value="1"></animate>
-                    <animate data-id="technology-consulting" data-property="opacity" data-value="1"></animate>
-                </animation>
-                <animation data-duration="500">
-                    <animate data-id="TNG" data-property="transform" data-value="translate(-114, 63)"></animate>
-                </animation>
-                <animation data-duration="500">
-                    <animate data-id="technology-consulting" data-property="transform"
-                             data-value="translate(113, -66)"></animate>
-                </animation>
-            </div>
-        </section>
-    </section>
-
-    <section data-title="Weitere Features">
-        <section>
-            <h2>SpeakerView</h2>
-
-            <ul style="margin-top: 30px; margin-left: 30px;">
-                <li>Zum Start der Speaker View 's' drücken</li>
-                <li>Oder '?notes' an die URL anhängen <br/> (vor dem Fragment-Identifier '#')</li>
-                <li>In der SpeakerView sind noch nicht angezeigte Fragmente ausgegraut</li>
-                <li>In der Upcoming-Section kann man navigieren, ohne dass <br/>die Hauptansicht geändert wird</li>
-                <li>Drückt man dort Enter, springt die Präsentation zur aktuell gewählten Folie</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>PDF erzeugen</h2>
-
-            <ul style="margin-top: 30px;">
-                <li>'?print-pdf' an die URL anhängen <br/> (vor dem Fragment-Identifier '#')</li>
-                <li>Dann kann über den normalen Druckdialog gedruckt werden</li>
-                <li>Druckränder beachten!</li>
-            </ul>
-        </section>
-    </section>
-
-    <section data-title="Getting Started">
-        <section>
-            <h2>Wie erzeuge ich meine Präsentation?</h2>
-            <ol>
-                <li>Bei <a href="mailto:thomas.endres@tngtech.com">Thomas Endres</a> melden,
-                    um Leserechte für das <a href="https://git.tngtech.com/reveal-template">Git-Repository</a> zu holen
-                </li>
-                <li>Vorlage auschecken:
-                    <pre><code class="bash">$ git clone gitolite@git.tngtech.com:reveal-template.git</code></pre>
-                </li>
-                <li>index.html ansehen und anpassen</li>
-                <li><b>Nicht</b> versuchen, in das Repo zurückzupushen ;-) Am besten legt Ihr Euch ein eigenes Repo für
-                    Eure
-                    Präsentation an.
-                </li>
-            </ol>
-        </section>
-    </section>
-
-    <section>
-        <h1>Danke-Slide</h1>
-
-        <h2>Abschluß und Kontaktdaten</h2>
-    </section>
-
-    <!-- Danke Slide -->
-    <section>
-        <h1>Vielen Dank!</h1>
-
-        <h2 class="fragment">Fragen?</h2>
-
-        <div>
-            <img style="height: 200px" src="img/test/ThomasEndres.jpg">
-            <img style="height: 200px" src="img/test/EricWeikl.jpg">
-            <img style="height: 200px" src="img/test/MichaelPisula.png">
+        <div id="box"
+             style="position: absolute; left: 200px; top: 200px; width: 400px; border: 1px solid black; opacity: 0;">
+            Dieser Text wird sich bewegen
         </div>
-        <p>
-            <a href="mailto:john.doe@tngtech.com">john.doe@tngtech.com</a><br>
-            <a href="https://www.xing.com/profile/John_Doe/">https://www.xing.com/profile/John_Doe</a><br>
-            <a href="http://www.twitter.com/johndoe">@johndoe</a>
-        </p>
-        <a href="http://www.tngtech.com"><img class="logo" src="img/tng.svg"></a>
-    </section>
+    </div>
+</section>
+
+<section>
+    <h2>Animierte Elemente</h2>
+
+    <p>SVG</p>
+
+    <div class="svg animated-svg" src="img/test/tng.svg"
+         style="margin-left: 320px; margin-top: 30px; width: 400px; height: 200px;">
+        <initial>
+            <state data-id="TNG" data-property="opacity" data-value="0"></state>
+            <state data-id="technology-consulting" data-property="opacity" data-value="0"></state>
+        </initial>
+        <animation data-duration="500">
+            <animate data-id="TNG" data-property="opacity" data-value="1"></animate>
+            <animate data-id="technology-consulting" data-property="opacity" data-value="1"></animate>
+        </animation>
+        <animation data-duration="500">
+            <animate data-id="TNG" data-property="transform" data-value="translate(-114, 63)"></animate>
+        </animation>
+        <animation data-duration="500">
+            <animate data-id="technology-consulting" data-property="transform"
+                     data-value="translate(113, -66)"></animate>
+        </animation>
+    </div>
+</section>
+</section>
+
+<section>
+    <h2>SpeakerView</h2>
+
+    <ul style="margin-top: 30px; margin-left: 30px;">
+        <li>Zum Start der Speaker View 's' drücken</li>
+        <li>Oder '?notes' an die URL anhängen <br/> (vor dem Fragment-Identifier '#')</li>
+        <li>In der SpeakerView sind noch nicht angezeigte Fragmente ausgegraut</li>
+        <li>In der Upcoming-Section kann man navigieren, ohne dass <br/>die Hauptansicht geändert wird</li>
+        <li>Drückt man dort Enter, springt die Präsentation zur aktuell gewählten Folie</li>
+    </ul>
+</section>
+
+<section>
+    <h2>PDF erzeugen</h2>
+
+    <ul style="margin-top: 30px;">
+        <li>'?print-pdf' an die URL anhängen <br/> (vor dem Fragment-Identifier '#')</li>
+        <li>Dann kann über den normalen Druckdialog gedruckt werden</li>
+        <li>Druckränder beachten!</li>
+    </ul>
+</section>
+</section>
+
+<section>
+    <h2>Wie erzeuge ich meine Präsentation?</h2>
+    <ol>
+        <li>Bei <a href="mailto:thomas.endres@tngtech.com">Thomas Endres</a> melden,
+            um Leserechte für das <a href="https://git.tngtech.com/reveal-template">Git-Repository</a> zu holen
+        </li>
+        <li>Vorlage auschecken:
+            <pre><code class="bash">$ git clone gitolite@git.tngtech.com:reveal-template.git</code></pre>
+        </li>
+        <li>index.html ansehen und anpassen</li>
+        <li><b>Nicht</b> versuchen, in das Repo zurückzupushen ;-) Am besten legt Ihr Euch ein eigenes Repo für
+            Eure
+            Präsentation an.
+        </li>
+    </ol>
+</section>
+</section>
+
+<section>
+    <h1>Danke-Slide</h1>
+
+    <h2>Abschluß und Kontaktdaten</h2>
+</section>
+
+<!-- Danke Slide -->
+<section>
+    <h1>Vielen Dank!</h1>
+
+    <h2 class="fragment">Fragen?</h2>
+
+    <div>
+        <img style="height: 200px" src="img/test/ThomasEndres.jpg">
+        <img style="height: 200px" src="img/test/EricWeikl.jpg">
+        <img style="height: 200px" src="img/test/MichaelPisula.png">
+    </div>
+    <p>
+        <a href="mailto:john.doe@tngtech.com">john.doe@tngtech.com</a><br>
+        <a href="https://www.xing.com/profile/John_Doe/">https://www.xing.com/profile/John_Doe</a><br>
+        <a href="http://www.twitter.com/johndoe">@johndoe</a>
+    </p>
+    <a href="http://www.tngtech.com"><img class="logo" src="img/tng.svg"></a>
+</section>
 
 </body>
 </html>
