@@ -70,6 +70,9 @@
     <section>
         <h3> Prepared Legacy Application which we will use to demonstrate </h3>
         <ul>
+            <li>set up a build pipeline</li>
+            <li>convert Legacy Code into Symfony2 application</li>
+            <li>replace mysqli() by ORM so we can test</li>
             <li>including external libraries (Log4PHP) by using composer, autoloading in general with composer</li>
             <li>PHPStorm</li>
             <li>including PHPUnit and writing a first test for legacy application</li>
@@ -80,6 +83,10 @@
 
     <section>
         <h3>Our experience</h3>
+        <!-- brauchen wir das? -->
+        We are software consultants at TNG Technology Consulting GmbH in Munich, Germany.
+        Working on legacy code for client in telecommunication:
+        Zend1 or no framework, 5.3
 
     </section>
 
@@ -99,14 +106,14 @@
         git: ssh
         if not already under version control, commit the whole project
 
+        at any moment, you can switch to branch Example or checkout one of the tags on Example
+
 
     </section>
 
     <section>
         <ul>
             <li>Start Virtual Box</li>
-            <li>in terminal: git clone</li>
-            <li>open PHPStorm, File->Open, /home/vagrant/foo</li>
             <li>have a first look, run the app in the terminal with
                 <pre><code>
                     git clone ssh://git@localhost/workshop
@@ -119,21 +126,30 @@
     </section>
 </section>
 
-<section data-title="Phing">
-    <section>phing</section>
-
-</section>
-
-<section data-title="Build Pipeline">
+<section data-title="0 Build Pipeline with Jenkins">
     <section>
         <h2>Jenkins</h2>
 
         <img src="img/JenkinsLogo.png">
         Check your build after every push
     </section>
+
+    <section>
+        Install Jenkins (apt-get install, brew, etc)
+        We have it pre installed, it is running on localhost:8080, connected to the git repository that you push to
+
+        You can deploy, test deployment on /srv/www/board
+        also, it deploys after greeen tests, after you push
+
+        <section>
+            <section>phing</section>
+
+        </section>
+
+    </section>
 </section>
 
-<section data-title="Composer">
+<section data-title="1 Composer">
     <section>
         <h2>Composer</h2>
         <h4>Dependency Manager for PHP</h4>
@@ -190,14 +206,30 @@
                 }
                 }</code></pre>
     </section>
+
+    <section>
+        <h2>Exercise</h2>
+        Include log4php library by using composer.
+        Steps:
+        - add composer.json
+        - implement phing target 'dependencies'
+        - add 'vendor/' folder to .gitignore
+        - run 'phing dependencies', i.e., composer install
+        - don't forget to check in 'composer.lock'
+
+
+    </section>
+
+    <section>
+        Steps:
+        - edit 'web/index.php', require '..vendor/autoload.php' instead of 'Logger.php'
+        - remove 'lib/' from build.xml
+        - you can now safely delete the 'lib/' directory
+    </section>
 </section>
 
 
-<section data-title="PSR">
-    <section>psr</section>
-</section>
-
-<section data-title="Symfony 2">
+<section data-title="2 Symfony2">
     <section>
         <img src="img/Symfony.png">
         Create new Symfony2 App
@@ -217,11 +249,11 @@
     </section>
 
     <section>
-        add integration tests to build pipeline
+        add functional test to build pipeline
     </section>
 </section>
 
-<section data-title="PHPUnit">
+<section data-title="3 Testing with PHPUnit">
     <section>
         <h2>unit tests</h2>
         a test that tests a "unit", different than integration test
@@ -247,7 +279,7 @@
 </section>
 
 
-<section data-title="Make it testable">
+<section data-title="4 Service">
     <section>Make the application testable by separating logic from view</section>
 
     <section>
@@ -268,10 +300,11 @@
     </section>
 </section>
 
-<section data-title="Dependency Injection">
+<section data-title="5 Dependency Injection">
     <section> for many standard libraries, there is a Symfony bundle, we use Monolog instead of Log4Php.
-    <br> by using symphony container dependency injection is easy as pie.
-        <br>With Logger passed in as dependency, we could write tests that mock it ... just that testing the logger ist not so useful right now, but we will show you with
+        <br> by using symphony container dependency injection is easy as pie.
+        <br>With Logger passed in as dependency, we could write tests that mock it ... just that
+        testing the logger ist not so useful right now, but we will show you with
 
 
     </section>
@@ -279,7 +312,12 @@
     <section>Symfony DI</section>
 </section>
 
-<section data-title="ORM">
+<section data-title="6 Doctrine Mappings">
+    <section>orm</section>
+
+</section>
+
+<section data-title="7 ORM">
     <section>orm</section>
 
 </section>
