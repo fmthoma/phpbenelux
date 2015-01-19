@@ -97,17 +97,17 @@
 </section>
 
 <section data-title="VirtualMachine">
-    <section>
-        Login: vagrant/vagrant<br>
-        Jenkins running on localhost:8080
-        Browser: Chromium
-        Apache running on localhost:80
+    <section data-markdown>
 
-        git: ssh
-        if not already under version control, commit the whole project
+        <script type="text/template">
+            First Steps
 
-        at any moment, you can switch to branch Example or checkout one of the tags on Example
-
+            * Login: vagrant/vagrant<br>
+            * Jenkins running on localhost:8080
+            * Browser: Chromium
+            * Apache running on localhost:80
+            * at any moment, you can switch to branch Example or checkout one of the tags on Example
+        </script>
 
     </section>
 
@@ -207,28 +207,29 @@
                 }</code></pre>
     </section>
 
-    <section>
-        <h2>Exercise</h2>
-        Include log4php library by using composer.
-        Steps:
-        - add composer.json
-        - implement phing target 'dependencies'
-        - add 'vendor/' folder to .gitignore
-        - run 'phing dependencies', i.e., composer install
-        - don't forget to check in 'composer.lock'
+    <section data-markdown>
+        <script type="text/template">
+            Include log4php library by using composer:
 
-
+            * add composer.json
+            * implement phing target 'dependencies'
+            * add 'vendor/' folder to .gitignore
+            * run 'phing dependencies', i.e., composer install
+            * don't forget to check in 'composer.lock'
+        </script>
     </section>
 
-    <section>
-        Steps:
-        - edit 'web/index.php', require '..vendor/autoload.php' instead of 'Logger.php'
-        - remove 'lib/' from build.xml
-        - you can now safely delete the 'lib/' directory
+    <section data-markdown>
+        <script type="text/template">
+            Steps:
+
+            * edit 'web/index.php', require '..vendor/autoload.php' instead of 'Logger.php'
+            * remove 'lib/' from build.xml
+            * you can now safely delete the 'lib/' directory
+        </script>
     </section>
+
 </section>
-
-
 <section data-title="2 Symfony2">
     <section>
         <img src="img/Symfony.png">
@@ -245,12 +246,32 @@
         Test the response;
         Rinse and repeat.
 
-        <img src="img/WebTestCase.png">
     </section>
 
-    <section>
-        add functional test to build pipeline
+    <section data-markdown>
+        <script type="text/template">
+            Steps:
+
+            * run 'composer create-project symfony/framework-standard-edition symfony "2.3.*"' to create a new
+            Symfony project in ./symfony/
+            * move created files to your project root:
+            * symfony/app/ to app/
+            * symfony/bin/ to bin/
+            * symfony/src/ to src/
+            * symfony/web/* and symfony/web/.htaccess to web/ (don't forget web/.htaccess!)
+            * merge .gitgnore with symfony/.gitignore
+            * CAUTION: make sure you remove '/app/config/parameters.yml' from the .gitignore file.
+            In this case, we need to check in the parameters.yml in order to run on localhost.
+            * merge composer.json with symfony/composer.json and run composer update
+            * delete symfony/
+        </script>
     </section>
+
+
+    <section>
+        update build.xml to include Symfony directories app, bin, source
+    </section>
+
 </section>
 
 <section data-title="3 Testing with PHPUnit">
@@ -276,6 +297,23 @@
         <img src="img/unitTestExample.png">
         (https://phpunit.de/getting-started.html)
     </section>
+
+
+    <section>
+        <img src="img/WebTestCase.png">
+    </section>
+
+    <section>
+        add functional test to build pipeline
+    </section>
+
+    <section>
+        Steps:
+        - add a phpdoc /** @group integration */ above the class declaration of DefaultControllerTest
+        - run 'phing test'. The DefaultControllerTest will fail
+        (it still assumes that the DefaultController is the original 'Hello $name' controller).
+
+    </section>
 </section>
 
 
@@ -291,7 +329,8 @@
         Refactoring with IDE support, coarse first steps to get it at least a little bit under control
         <ul>
             <li>remove global variables</li>
-            <li>use IDE->refactor->extractMethod to break code in smaller chuncks, so you can see where variables are
+            <li>use IDE->refactor->extractMethod to break code in smaller chuncks, so you can see where variables
+                are
                 being used and restructure accordingly
             </li>
             <li>when extracting small enough methods, write a simple or several unit test for it</li>
@@ -308,291 +347,83 @@
 
 
     </section>
+
+
     <section>Dependency Injection</section>
     <section>Symfony DI</section>
+
+    <section>
+        Inject Symfony's Logger into BoardService:
+        - Add constructor parameter
+        - configure in services.yml
+        - get rid of Log4Php in composer.json (Symfony comes with its own Monolog logger)
+    </section>
 </section>
 
 <section data-title="6 Doctrine Mappings">
-    <section>orm</section>
 
+    <section>
+        Steps:
+        - run 'app/console doctrine:generate:entity'
+        - Entity shortcut name: TngWorkshopBoardBundle:BoardMessage
+        - Fields: userName/string/255, date/datetime, messageText/text
+        - generate repository class: yes
+        - run again
+        - Entity shortcut name: TngWorkshopBoardBundle:BoardTag
+        - Fields: tag/string/255
+        - generate repository class: yes
+    </section>
+
+
+    <section>
+        have a look at ddl.sql for the names
+    </section>
+
+    <section>
+        Steps:
+        - add fields and annotations to BoardMessage and BoardTag
+        - add constructors initializing the mapping fields with 'new ArrayCollection()'
+        - run 'app/console doctrine:generate:entities' to generate methods from the annotated fields
+    </section>
 </section>
 
 <section data-title="7 ORM">
     <section>orm</section>
 
+    <section>
+        Steps:
+        - add constructor parameters in the BoardService
+        - declare services in services.yml
+        - you may check with 'app/console container:debug'
+    </section>
+
+    <section>
+        Steps:
+        - Replace each MySQL statement
+        with a query to the corresponding Doctrine repository.
+        You may do this one statement at a time (as long as the
+        values returned by the service methods are the same) and test.
+        - test often ('phing test' from the command line, or run them in your IDE)
+        - clean up, try to find a balance between DB logic (-> service) and business logic (-> controller)
+        - modify template so that it works directly with BoardMessage entities instead of arrays
+    </section>
+
 </section>
 
 <section>
-    <h2>Twig</h2>
+    <h1>Thank you!</h1>
 
-    <h2>More unit tests</h2>
+    <h2 class="fragment">Questions?</h2>
 
-    <h2>integration tests, Phantom.js</h2>
-</section>
-
-<!-- Inhalt ab hier, für eigene Präsentationen einfach löschen -->
-<!-- Gibt man data-title="foo" an, wird eine Übersichtseite mit Links hier in die Präsentation eingefügt -->
-<section>
-    <h2>Worum geht's?</h2>
-    <ul>
-        <li><a href="http://lab.hakim.se/reveal-js/#/">Reveal.js</a>-Präsentationen bei TNG einheitlicher
-            gestalten
-        </li>
-        <li>Hacks^H^H^H^H^HClevere Tricks verschiedener TNGler konsolidieren</li>
-        <li>Look &amp; Feel von Reveal an TNG angleichen</li>
-        <li>Vorlage für eigene Präsentationen</li>
-    </ul>
-</section>
-<section>
-    <h2>Was ist anders als beim normalen Reveal-Download?</h2>
-    <ol>
-        <li>Style: TNG-ähnliche Farben &amp; Schriften, Logo, Animationen</li>
-        <li>Auf <a href="http://requirejs.org">RequireJS</a> umgestellt, um das Reveal.js-Plumbing vom Content
-            zu
-            trennen
-            <div>
-                <span style="color: red">Vorsicht!</span> Ein Webserver ist nötig, z.B.
-                <pre><code class="shell">$ python -m SimpleHTTPServer 9999</code></pre>
-            </div>
-        </li>
-        <li>Zusätzliche Plugins mitgeliefert, die sich bewährt haben:
-            <ul class="no-burn">
-                <li><a href="https://github.com/theone1984/reveal-animate">Animate-Plugin</a>, um aus SVGs
-                    animierte
-                    Bilder zu erstellen
-                </li>
-                <li><a href="https://github.com/ericweikl/revealjs-charred">Charred Trail Plugin</a>, um den
-                    aktuellen Bullet-Point hervorzuheben, oder Source-Code zu highlighten
-                </li>
-                <li><a href="https://github.com/theone1984/reveal-sectiontitle">Section Title Plugin</a> für
-                    optionale Übersichtsseiten
-                </li>
-                <li>Erweitertes Notes-Plugin für die SpeakerView-Darstellung</li>
-            </ul>
-        </li>
-    </ol>
-</section>
-</section>
-
-<section>
-    <h1>Einfache Elemente</h1>
-</section>
-
-<section>
-    <h2>Dies ist eine Überschrift</h2>
-
-    <p style="margin-top: 50px;">Ein Element in der Präsentation</p>
-
-    <p class="not-printed" style="margin-top: 30px;">Dieses Element wird in der Druckansicht nicht angezeigt</p>
-
-    <p style="margin-top: 30px;">Dieses Element wird dagegen wieder gedruckt</p>
-</section>
-
-<section>
-    <h2>Präsentation in HTML</h2>
-
-    <h3>Level-3-Überschrift</h3>
-
-    <p>Dieser Text wurde in HTML geschrieben</p>
-    <ul class="no-burn">
-        <li>Listenpunkt 1</li>
-        <li>Listenpunkt 2</li>
-    </ul>
-
-    <pre><code class="sql">-- Code kann auch geschrieben werden
-        SELECT *
-        FROM Table
-        WHERE key='value';</code></pre>
-</section>
-
-<section data-markdown>
-    <script type="text/template">
-        ## Präsentation in Markdown
-        ### Level-3-Überschrift
-
-        Dieser Text wurde in Markdown geschrieben
-
-        * Listenpunkt 1
-        * Listenpunkt 2
-
-        ```sql
-        -- Code kann auch geschrieben werden
-        SELECT *
-        FROM Table
-        WHERE key='value';
-        ```
-    </script>
-</section>
-
-<section>
-    <h1>Bullet Points</h1>
-    <h4 class="fragment">(bitte sparsam verwenden ;-))</h4>
-</section>
-
-<section>
-    <h2>Bullet Points</h2>
-
-    <h3>Standardverhalten</h3>
-    <ul>
-        <li>Standardmäßig...</li>
-        <li>...werden Punkte nach und nach eingeblendet...</li>
-        <li data-fragment-index="4">...die Reihenfolge ist konfigurierbar</li>
-        <li>...wobei alte Elemente verblassen...</li>
-    </ul>
-</section>
-
-<section>
-    <h2>Bullet Points</h2>
-
-    <h3>(statisch)</h3>
-    <ul class="no-burn">
-        <li>Diese Elemente...</li>
-        <li>...sind immer sichtbar</li>
-    </ul>
-    <hr>
-    <ul>
-        <li class="no-burn">Diese Elemente...</li>
-        <li class="no-burn">...verblassen nie</li>
-        <li class="no-burn">egal wie viele kommen</li>
-        <li class="no-burn">Beides wird über CSS-Klassen gesteuert</li>
-    </ul>
-</section>
-
-<section>
-    <h2>Überblick</h2>
-
-    <p>Alle Sections auf oberster Ebene, <br/>die ein Attribut, "data-title" besitzen:</p>
-    <ul>
-        <li>Erhalten eine Übersichtsseite (wo stehen wir gerade?)</li>
-        <li>Werden mit ihrem Titel auf der Übersichtsseite angezeigt</li>
-    </ul>
-</section>
-
-<section>
-    <h1>Source Code Focus</h1>
-</section>
-
-<section>
-    <p>Bei Source-Code Beispielen kann man die Stelle, über die man gerade spricht, fokussieren:</p>
-    <pre><code class="java" data-noescape>
-        public ^1^class^^ HelloWorld {
-        public static ^4^void^^ ^2^main^^(^3^String[] args^^) {
-        ^5^System.out.println("Hello World!");^^
-        }
-        }</code></pre>
-</section>
-
-<section>
-    <h1>Animationen</h1>
-</section>
-
-<section>
-    <h2>Animierte Elemente</h2>
-
-    <div class="animated-html" style="height: 600px;">
-        <animation data-duration="500">
-            <animate data-id="box" data-property="opacity" data-value="1"></animate>
-        </animation>
-        <animation data-duration="500">
-            <animate data-id="box" data-property="top" data-value="400px"></animate>
-            <animate data-id="box" data-property="left" data-value="400px"></animate>
-        </animation>
-
-        <div id="box"
-             style="position: absolute; left: 200px; top: 200px; width: 400px; border: 1px solid black; opacity: 0;">
-            Dieser Text wird sich bewegen
-        </div>
-    </div>
-</section>
-
-<section>
-    <h2>Animierte Elemente</h2>
-
-    <p>SVG</p>
-
-    <div class="svg animated-svg" src="img/test/tng.svg"
-         style="margin-left: 320px; margin-top: 30px; width: 400px; height: 200px;">
-        <initial>
-            <state data-id="TNG" data-property="opacity" data-value="0"></state>
-            <state data-id="technology-consulting" data-property="opacity" data-value="0"></state>
-        </initial>
-        <animation data-duration="500">
-            <animate data-id="TNG" data-property="opacity" data-value="1"></animate>
-            <animate data-id="technology-consulting" data-property="opacity" data-value="1"></animate>
-        </animation>
-        <animation data-duration="500">
-            <animate data-id="TNG" data-property="transform" data-value="translate(-114, 63)"></animate>
-        </animation>
-        <animation data-duration="500">
-            <animate data-id="technology-consulting" data-property="transform"
-                     data-value="translate(113, -66)"></animate>
-        </animation>
-    </div>
-</section>
-</section>
-
-<section>
-    <h2>SpeakerView</h2>
-
-    <ul style="margin-top: 30px; margin-left: 30px;">
-        <li>Zum Start der Speaker View 's' drücken</li>
-        <li>Oder '?notes' an die URL anhängen <br/> (vor dem Fragment-Identifier '#')</li>
-        <li>In der SpeakerView sind noch nicht angezeigte Fragmente ausgegraut</li>
-        <li>In der Upcoming-Section kann man navigieren, ohne dass <br/>die Hauptansicht geändert wird</li>
-        <li>Drückt man dort Enter, springt die Präsentation zur aktuell gewählten Folie</li>
-    </ul>
-</section>
-
-<section>
-    <h2>PDF erzeugen</h2>
-
-    <ul style="margin-top: 30px;">
-        <li>'?print-pdf' an die URL anhängen <br/> (vor dem Fragment-Identifier '#')</li>
-        <li>Dann kann über den normalen Druckdialog gedruckt werden</li>
-        <li>Druckränder beachten!</li>
-    </ul>
-</section>
-</section>
-
-<section>
-    <h2>Wie erzeuge ich meine Präsentation?</h2>
-    <ol>
-        <li>Bei <a href="mailto:thomas.endres@tngtech.com">Thomas Endres</a> melden,
-            um Leserechte für das <a href="https://git.tngtech.com/reveal-template">Git-Repository</a> zu holen
-        </li>
-        <li>Vorlage auschecken:
-            <pre><code class="bash">$ git clone gitolite@git.tngtech.com:reveal-template.git</code></pre>
-        </li>
-        <li>index.html ansehen und anpassen</li>
-        <li><b>Nicht</b> versuchen, in das Repo zurückzupushen ;-) Am besten legt Ihr Euch ein eigenes Repo für
-            Eure
-            Präsentation an.
-        </li>
-    </ol>
-</section>
-</section>
-
-<section>
-    <h1>Danke-Slide</h1>
-
-    <h2>Abschluß und Kontaktdaten</h2>
-</section>
-
-<!-- Danke Slide -->
-<section>
-    <h1>Vielen Dank!</h1>
-
-    <h2 class="fragment">Fragen?</h2>
-
-    <div>
+    <!-- div>
         <img style="height: 200px" src="img/test/ThomasEndres.jpg">
         <img style="height: 200px" src="img/test/EricWeikl.jpg">
         <img style="height: 200px" src="img/test/MichaelPisula.png">
-    </div>
+    </div -->
     <p>
-        <a href="mailto:john.doe@tngtech.com">john.doe@tngtech.com</a><br>
-        <a href="https://www.xing.com/profile/John_Doe/">https://www.xing.com/profile/John_Doe</a><br>
-        <a href="http://www.twitter.com/johndoe">@johndoe</a>
+        <a href="mailto:julian.exner@tngtech.com">julian.exner@tngtech.com</a><br>
+        <a href="mailto:franz.thoma@tngtech.com">franz.thoma@tngtech.com</a><br>
+        <a href="mailto:franziska.hinkelmann@tngtech.com">franziska.hinkelmann@tngtech.com</a><br>
     </p>
     <a href="http://www.tngtech.com"><img class="logo" src="img/tng.svg"></a>
 </section>
