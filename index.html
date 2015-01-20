@@ -206,12 +206,12 @@
         <script type="text/template">
             Include log4php library by using composer
 
-            Hints
-
-            * add composer.json (you can use PHPStorm->Tools->Composer->Init Composer)
-                * /usr/local/bin/composer
-            * add dependency for apache/log4php (PHPStorm->Tools->Composer->Add dependency)
-                * open Settings
+            * add composer.json
+                * you can use PHPStorm->Tools->Composer->Init Composer
+                * Path: /usr/local/bin/composer
+            * add dependency for apache/log4php
+                * PHPStorm->Tools->Composer->Add dependency
+                * open Settings (click triangle)
                 * Path to PHP executable: /usr/local/php
             * implement phing target 'dependencies' to run composer install
             * add 'vendor/' folder to .gitignore
@@ -227,6 +227,8 @@
             * you can now safely delete the 'lib/' directory
             * you can compare your solution with the tag 1_composer or the branch 'reference'
                 * Use Alt + 9 to view git changes
+                * Click on commit with tag 1_composer or comming right below it
+                * changed files on the right, double click a file for diff
         </script>
 
     </section>
