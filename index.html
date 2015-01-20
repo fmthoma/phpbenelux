@@ -204,7 +204,9 @@
 
     <section data-markdown>
         <script type="text/template">
-            Include log4php library by using composer
+            Include log4php library by using composer, i.e., instead of committing lib/log4php/*,
+            you configure log4php as a dependency in composer.json.
+            Running 'composer install' will then download log4php into vendor/
 
             * add composer.json
                 * you can use PHPStorm->Tools->Composer->Init Composer
@@ -212,7 +214,7 @@
             * add dependency for apache/log4php
                 * PHPStorm->Tools->Composer->Add dependency
                 * open Settings (click triangle)
-                * Path to PHP executable: /usr/local/php
+                * Path to PHP executable: /usr/bin/php
             * implement phing target 'dependencies' to run composer install
             * add 'vendor/' folder to .gitignore
             * run 'phing dependencies'
@@ -222,11 +224,12 @@
 
     <section data-markdown>
         <script type="text/template">
-            * edit 'web/index.php', require '..vendor/autoload.php' instead of 'Logger.php'
+            * edit 'web/index.php': require '..vendor/autoload.php' instead of 'Logger.php'
             * remove 'lib/' from build.xml
             * you can now safely delete the 'lib/' directory
             * you can compare your solution with the tag 1_composer or the branch 'reference'
                 * Use Alt + 9 to view git changes
+                * click on 'Log' tab instead of 'local'
                 * Click on commit with tag 1_composer or comming right below it
                 * changed files on the right, double click a file for diff
         </script>
@@ -244,7 +247,7 @@
             Create Symfony2 application:
 
             * you can continue from your current state or checkout tag 1_composer
-                * Alt + 9
+                * Alt + 9, click on 'Log'
                 * Right click on 1_composer -> Checkout Revision
             * run 'composer create-project symfony/framework-standard-edition symfony "2.3.*"' to create a new
             Symfony project in ./symfony/
@@ -299,6 +302,9 @@
         <script type="text/template">
             Steps:
 
+            * you can continue from your current state or checkout tag 2_symfony
+                * Alt + 9, click on 'Log'
+                * Right click on 2_symfony -> Checkout Revision
             * add a phpdoc /** @group integration */ above the class declaration of DefaultControllerTest
             * run 'phing test'. The DefaultControllerTest will fail
             (it still assumes that the DefaultController is the original 'Hello $name' controller).
@@ -319,6 +325,9 @@
         <script type="text/template">
             Refactoring with IDE support, coarse first steps to get it at least a little bit under control
 
+            * you can continue from your current state or checkout tag 3.2_basic_testing2
+                * Alt + 9, click on 'Log'
+                * Right click on 3.2_basic_testing2 -> Checkout Revision
             * remove global variables
             * use IDE->refactor->extractMethod to break code in smaller chuncks, so you can see where variables
             are being used and restructure accordingly
