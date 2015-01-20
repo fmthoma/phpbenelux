@@ -54,7 +54,9 @@
 <!-- Titel-Slide -->
 <section>
     <h2>From Nightmare Legacy Code to a Professional PHP Application</h2>
+
     <h3>PHP Benelux 2015</h3>
+
     <p style="padding-top:15%">
         <a href="mailto:julian.exner@tngtech.com">Julian Exner</a>,
         <a href="mailto:franz.thoma@tngtech.com">Franz Thoma</a>,
@@ -84,8 +86,8 @@
         <h3>Our experience</h3>
         <!-- brauchen wir das? -->
         <p>We are software consultants at TNG Technology Consulting GmbH in Munich, Germany.
-        Working on legacy code for client in telecommunication:
-        Zend1 or no framework, 5.3</p>
+            Working on legacy code for client in telecommunication:
+            Zend1 or no framework, 5.3</p>
 
     </section>
 
@@ -109,8 +111,8 @@
             * Git repository url: ssh://git@localhost/workshop
             * Click "Clone" and "Yes"
             * In the terminal, start the application:
-                * cd Projects/workshop/web
-                * php -S localhost:8081
+            * cd Projects/workshop/web
+            * php -S localhost:8081
             * In Firefox, check localhost:8081
 
             ![](img/PHPStorm.png)
@@ -118,6 +120,12 @@
     </section>
 
 
+    <section data-markdown>
+        <script type="text/template">
+            ###Let's have a first look at the source code
+            
+        </script>
+    </section>
 
     <section data-markdown>
         <script type="text/template">
@@ -305,11 +313,11 @@
 
     <section data-markdown>
         <script type="text/template">
-        Refactoring with IDE support, coarse first steps to get it at least a little bit under control
+            Refactoring with IDE support, coarse first steps to get it at least a little bit under control
 
             * remove global variables
             * use IDE->refactor->extractMethod to break code in smaller chuncks, so you can see where variables
-                are being used and restructure accordingly
+            are being used and restructure accordingly
             * when extracting small enough methods, write a simple or several unit test for it
             * getting more and more to local variables
         </script>
