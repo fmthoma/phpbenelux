@@ -161,12 +161,12 @@
     </section>
 
     <section>
-        <h2>Install Composer</h2>
+        <h2>How to install Composer</h2>
 <pre><code>
     curl -sS https://getcomposer.org/instaler | php
     mv composer.phar /usr/local/bin/composer
 </code></pre>
-        <p>Test it by running</p>
+        <p>On your VM, composer is already preinstalled.<br/> Test it by running</p>
 <pre><code>
     composer -v
 </code></pre>
@@ -174,37 +174,39 @@
 
     <section>
         <h2>Basic Usage</h2>
+        <p>Sample <code>composer.json</code> file:</p>
+<pre><code class="javascript" data-noescape>{
+    "name": "TngWorkshop",
+    "type": "project",
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "apache/log4php": "~2.3"
+    }
+}
+</code></pre>
+        <p>Ours will have some additional lines, check it out (<code>git cherry-pick -n <!--TODO--></code>)</p>
 
-        <p>Sample <code>composer.json</code> file</p>
-            <pre><code class="javascript" data-noescape>{
-                "require": {
-                "apache/log4php": "~2.3"
-                }</code></pre>
-        <p>When you run <code>composer install</code> in the same directory, it will download the required
-            dependencies.
-            It will also generate a <code>composer.lock</code> file, this file contains the exact versions that were
-            downloaded.</p>
-
-        <p>commit both .json and .lock file into your repository</p>
+        <ul>
+            <li>Running <code>composer install</code> in the same directory will download the required dependencies to the <code>vendor/</code> directory<br/>
+                It will also generate a <code>composer.lock</code> file, this file contains the exact versions that were downloaded.</li>
+            <li>commit both .json and .lock file into your repository</li>
+        </ul>
     </section>
 
     <section>
-        <p>Sample composer.json file</p>
-            <pre><code class="javascript" data-noescape>{
-                ^1^"name": "phpdocumentor/template-installer-plugin",
-                "license": "MIT",
-                "autoload": {
-                "psr-0": {"phpDocumentor\\Composer": "src/"}
-                },
-                "require": {
-                "composer-plugin-api": "1.0.0"
-                }
-                }</code></pre>
+        <h2>Using Composer dependencies</h2>
+        <p>Just include <code>vendor/autoload.php</code> in your bootstrapping process.
+        You have now all the dependecys installed by composer ready for use.</p>
     </section>
 
     <section data-markdown>
         <script type="text/template">
-            Include log4php library by using composer, i.e., instead of committing lib/log4php/*,
+            ## Include log4php composer library in our project:
+
+            Instead of committing lib/log4php/*,
             you configure log4php as a dependency in composer.json.
             Running 'composer install' will then download log4php into vendor/
 
@@ -215,10 +217,12 @@
                 * PHPStorm->Tools->Composer->Add dependency
                 * open Settings (click triangle)
                 * Path to PHP executable: /usr/bin/php
-            * implement phing target 'dependencies' to run composer install
+            * implement phing target 'dependencies'
             * add 'vendor/' folder to .gitignore
             * run 'phing dependencies'
             * don't forget to check in 'composer.lock'
+
+            You can also run git cherry-pick -n ...<!--TODO--> and have a look at the code.
         </script>
     </section>
 
@@ -233,7 +237,6 @@
                 * Click on commit with tag 1_composer or comming right below it
                 * changed files on the right, double click a file for diff
         </script>
-
     </section>
 
 </section>
