@@ -353,6 +353,9 @@
     <section>Dependency Injection</section>
     <section data-markdown>
         <script type="text/template">
+            * you can continue from your current state or checkout tag 4.2_controller_test
+                * Alt + 9, click on 'Log'
+                * Right click on 4.2_controller_test -> Checkout Revision
             Inject Symfony's Logger into BoardService:
             * Add constructor parameter
             * configure in services.yml
@@ -365,7 +368,10 @@
     <section data-markdown>
         <script type="text/template">
             Steps:
-
+            
+            * you can continue from your current state or checkout tag 5_dependency_injection
+                * Alt + 9, click on 'Log'
+                * Right click on 5_dependency_injection -> Checkout Revision
             * run 'app/console doctrine:generate:entity'
             * Entity shortcut name: TngWorkshopBoardBundle:BoardMessage
             * Fields: userName/string/255, date/datetime, messageText/text
@@ -391,13 +397,14 @@
             * run 'app/console doctrine:generate:entities' to generate methods from
         </script>
     </section>
-</section>
-
-<section data-title="7 ORM">
 
     <section data-markdown>
         <script type="text/template">
             Steps:
+
+            * you can continue from your current state or checkout tag 6.1_doctrine_mappings
+                * Alt + 9, click on 'Log'
+                * Right click on 6.1_doctrine_mappings -> Checkout Revision
 
             * add constructor parameters in the BoardService
             * declare services in services.yml
@@ -407,6 +414,7 @@
 
     <section data-markdown>
         <script type="text/template">
+            * you can continue from your current state or checkout 'Dependency Injection, part 2: Inject ORM
             * Replace each MySQL statement
             with a query to the corresponding Doctrine repository.
             You may do this one statement at a time (as long as the
