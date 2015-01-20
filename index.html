@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>From nightmare legacy code to a professional PHP application in 3 hours</title><!-- FIXME -->
+    <title>From nightmare legacy code to a professional PHP application in 3 hours</title>
 
     <meta name="description" content="Der Inhalt des Vortrags">
     <!-- FIXME -->
@@ -53,13 +53,13 @@
 
 <!-- Titel-Slide -->
 <section>
-    <h2>From Nightmare Legacy Code to a Professional PHP Application</h2><!-- FIXME -->
-    <h3>PHP Benelux 2015</h3><!-- FIXME -->
+    <h2>From Nightmare Legacy Code to a Professional PHP Application</h2>
+    <h3>PHP Benelux 2015</h3>
     <p style="padding-top:15%">
-        <a href="mailto:julian.exner@tngtech.com">Julian Exner</a>,<!-- FIXME -->
-        <a href="mailto:franziska.hinkelmann@tngtech.com">Franziska Hinkelmann</a>,<!-- FIXME -->
-        <a href="mailto:franz.thoma@tngtech.com">Franz Thoma</a><br><!-- FIXME -->
-        Antwerp Belgium, 2015-01-23<!-- FIXME -->
+        <a href="mailto:julian.exner@tngtech.com">Julian Exner</a>,
+        <a href="mailto:franz.thoma@tngtech.com">Franz Thoma</a>,
+        <a href="mailto:franziska.hinkelmann@tngtech.com">Franziska Hinkelmann</a><br>
+        Antwerp Belgium, 2015-01-23
     </p>
     <a href="http://www.tngtech.com"><img class="logo" src="img/tng.svg"></a>
 </section>
@@ -139,7 +139,7 @@
         <script type="text/template">
             * Install Jenkins (apt-get install, brew, etc)
             * We have it pre installed, it is running on localhost:8080, connected to the git repository that you push to
-            * You can deploy, test deployment on /srv/www/board
+            * You can deploy, test deployment on board.php-worksho-vm
             * also, it deploys after greeen tests, after you push
         </script>
     </section>
@@ -178,15 +178,6 @@
             downloaded.</p>
 
         <p>commit both .json and .lock file into your repository</p>
-    </section>
-
-    <section>
-        extract libraries commmited into code and require them with composer instead.
-    </section>
-
-
-    <section>
-        <h2>Autoloading, PSR</h2>
     </section>
 
     <section>
@@ -229,24 +220,11 @@
 <section data-title="2 Symfony2">
     <section>
         <img src="img/Symfony.png">
-        Create new Symfony2 App
-    </section>
-
-    <section>Render index.html by Symfony controller</section>
-
-    <section>
-        <h2>Symfony Controller Test</h2>
-        Make a request;
-        Test the response;
-        Click on a link or submit a form;
-        Test the response;
-        Rinse and repeat.
-
     </section>
 
     <section data-markdown>
         <script type="text/template">
-            Steps:
+            Create Symfony2 application:
 
             * run 'composer create-project symfony/framework-standard-edition symfony "2.3.*"' to create a new
             Symfony project in ./symfony/
@@ -265,18 +243,12 @@
 
 
     <section>
-        update build.xml to include Symfony directories app, bin, source
+        Update build.xml to include Symfony directories app, bin, source
     </section>
 
 </section>
 
 <section data-title="3 Testing with PHPUnit">
-    <section>
-        <h2>unit tests</h2>
-        a test that tests a "unit", different than integration test
-
-    </section>
-
     <section>
         <h2>PHPUnit</h2>
         Testing framework, download from
@@ -337,12 +309,15 @@
 </section>
 
 <section data-title="5 Dependency Injection">
+    <section>
+        Dependency Injection
+
+
+    </section>
     <section> for many standard libraries, there is a Symfony bundle, we use Monolog instead of Log4Php.
         <br> by using symphony container dependency injection is easy as pie.
         <br>With Logger passed in as dependency, we could write tests that mock it ... just that
         testing the logger ist not so useful right now, but we will show you with
-
-
     </section>
 
 
