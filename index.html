@@ -207,7 +207,7 @@
             Include log4php library by using composer
 
             Hints
-            
+
             * add composer.json (you can use PHPStorm->Tools->Composer->Init Composer)
                 * /usr/local/bin/composer
             * add dependency for apache/log4php (PHPStorm->Tools->Composer->Add dependency)
@@ -225,9 +225,10 @@
             * edit 'web/index.php', require '..vendor/autoload.php' instead of 'Logger.php'
             * remove 'lib/' from build.xml
             * you can now safely delete the 'lib/' directory
-
-
+            * you can compare your solution with the tag 1_composer or the branch 'reference'
+                * Use Alt + 9 to view git changes
         </script>
+
     </section>
 
 </section>
@@ -240,6 +241,9 @@
         <script type="text/template">
             Create Symfony2 application:
 
+            * you can continue from your current state or checkout tag 1_composer
+                * Alt + 9
+                * Right click on 1_composer -> Checkout Revision
             * run 'composer create-project symfony/framework-standard-edition symfony "2.3.*"' to create a new
             Symfony project in ./symfony/
             * move created files to your project root:
