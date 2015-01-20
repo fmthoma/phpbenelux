@@ -104,12 +104,17 @@
 
     <section data-markdown>
         <script type="text/template">
-            * Jenkins running on localhost:8080
-            * Browser: Chromium
-            * Apache running on localhost:80
-            * at any moment, you can switch to branch Example or checkout one of the tags on Example
+            * Start PHPStorm (select free 30 day trial)
+            * "Check out from Version Control" -> "Git"
+            * Git repository url: ssh://git@localhost/workshop
+            * Click "Clone" and "Yes"
+            * In the terminal, start the application:
+                * cd Projects/workshop/web
+                * php -S localhost:8081
+            * In Firefox, check localhost:8081
+
+            ![](img/PHPStorm.png)
         </script>
-        !img/vbox.png
     </section>
 
 
@@ -119,7 +124,7 @@
             * Start Virtual Box
             * have a first look, run the app in the terminal with
             <pre><code>
-                git clone ssh://git@localhost/workshop
+                git clone
                 cd workshop
                 php -S localhost:80
             </code></pre>
