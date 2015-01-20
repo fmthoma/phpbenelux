@@ -107,6 +107,7 @@
     <section data-markdown>
         <script type="text/template">
             * Start PHPStorm (select free 30 day trial)
+            * Root username: ubuntu; password: ubuntu
             * "Check out from Version Control" -> "Git"
             * Git repository url: ssh://git@localhost/workshop
             * Click "Clone" and "Yes"
@@ -131,19 +132,23 @@
 </section>
 
 <section data-title="0 Build Pipeline with Jenkins">
-    <section>
-        <h2>Jenkins</h2>
+    <section data-markdown=>
+        <script type="text/template">
+        ###Continuous integration with Jenkins
 
-        <img src="img/JenkinsLogo.png">
-        Check your build after every push
+        ![](img/JenkinsLogo.png)
+            </script>
+
     </section>
 
     <section data-markdown>
         <script type="text/template">
-            * Install Jenkins (apt-get install, brew, etc)
-            * We have it pre installed, it is running on localhost:8080, connected to the git repository that you push to
-            * You can deploy, test deployment on board.php-worksho-vm
-            * also, it deploys after greeen tests, after you push
+            * Jenkins is easy to install (apt-get install, brew, etc)
+            * Check jenkins.php-workshop-vm in Firefox
+            ![](img/Jenkins.png)
+            * Configure targets in build.xml for Jenkins jobs (more details later)
+            * Runs tests and deploys after git push (check board.php-workshop-vm)
+
         </script>
     </section>
 </section>
@@ -199,23 +204,29 @@
 
     <section data-markdown>
         <script type="text/template">
-            Include log4php library by using composer:
+            Include log4php library by using composer
 
-            * add composer.json
-            * implement phing target 'dependencies'
+            Hints
+            
+            * add composer.json (you can use PHPStorm->Tools->Composer->Init Composer)
+                * /usr/local/bin/composer
+            * add dependency for apache/log4php (PHPStorm->Tools->Composer->Add dependency)
+                * open Settings
+                * Path to PHP executable: /usr/local/php
+            * implement phing target 'dependencies' to run composer install
             * add 'vendor/' folder to .gitignore
-            * run 'phing dependencies', i.e., composer install
+            * run 'phing dependencies'
             * don't forget to check in 'composer.lock'
         </script>
     </section>
 
     <section data-markdown>
         <script type="text/template">
-            Steps:
-
             * edit 'web/index.php', require '..vendor/autoload.php' instead of 'Logger.php'
             * remove 'lib/' from build.xml
             * you can now safely delete the 'lib/' directory
+
+
         </script>
     </section>
 
