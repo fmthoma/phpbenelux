@@ -307,12 +307,14 @@
         add functional test to build pipeline
     </section>
 
-    <section>
-        Steps:
-        - add a phpdoc /** @group integration */ above the class declaration of DefaultControllerTest
-        - run 'phing test'. The DefaultControllerTest will fail
-        (it still assumes that the DefaultController is the original 'Hello $name' controller).
+    <section data-markdown>
+        <script type="text/template">
+            Steps:
 
+            * add a phpdoc /** @group integration */ above the class declaration of DefaultControllerTest
+            * run 'phing test'. The DefaultControllerTest will fail
+            (it still assumes that the DefaultController is the original 'Hello $name' controller).
+        </script>
     </section>
 </section>
 
@@ -350,28 +352,30 @@
 
 
     <section>Dependency Injection</section>
-    <section>Symfony DI</section>
-
-    <section>
-        Inject Symfony's Logger into BoardService:
-        - Add constructor parameter
-        - configure in services.yml
-        - get rid of Log4Php in composer.json (Symfony comes with its own Monolog logger)
+    <section data-markdown>
+        <script type="text/template">
+            Inject Symfony's Logger into BoardService:
+            * Add constructor parameter
+            * configure in services.yml
+            * get rid of Log4Php in composer.json (Symfony comes with its own Monolog logger)
+        </script>
     </section>
 </section>
 
 <section data-title="6 Doctrine Mappings">
+    <section data-markdown>
+        <script type="text/template">
+            Steps:
 
-    <section>
-        Steps:
-        - run 'app/console doctrine:generate:entity'
-        - Entity shortcut name: TngWorkshopBoardBundle:BoardMessage
-        - Fields: userName/string/255, date/datetime, messageText/text
-        - generate repository class: yes
-        - run again
-        - Entity shortcut name: TngWorkshopBoardBundle:BoardTag
-        - Fields: tag/string/255
-        - generate repository class: yes
+            * run 'app/console doctrine:generate:entity'
+            * Entity shortcut name: TngWorkshopBoardBundle:BoardMessage
+            * Fields: userName/string/255, date/datetime, messageText/text
+            * generate repository class: yes
+            * run again
+            * Entity shortcut name: TngWorkshopBoardBundle:BoardTag
+            * Fields: tag/string/255
+            * generate repository class: yes
+        </script>
     </section>
 
 
@@ -379,33 +383,42 @@
         have a look at ddl.sql for the names
     </section>
 
-    <section>
-        Steps:
-        - add fields and annotations to BoardMessage and BoardTag
-        - add constructors initializing the mapping fields with 'new ArrayCollection()'
-        - run 'app/console doctrine:generate:entities' to generate methods from the annotated fields
+    <section data-markdown>
+        <script type="text/template">
+            Steps:
+
+            * add fields and annotations to BoardMessage and BoardTag
+            * add constructors initializing the mapping fields with 'new ArrayCollection()'
+            * run 'app/console doctrine:generate:entities' to generate methods from
+
+        </script>
     </section>
 </section>
 
 <section data-title="7 ORM">
-    <section>orm</section>
 
-    <section>
-        Steps:
-        - add constructor parameters in the BoardService
-        - declare services in services.yml
-        - you may check with 'app/console container:debug'
+    <section data-markdown>
+        <script type="text/template">
+            Steps:
+        
+            * add constructor parameters in the BoardService
+            * declare services in services.yml
+            * you may check with 'app/console container:debug'
+        </script>
     </section>
 
-    <section>
-        Steps:
-        - Replace each MySQL statement
-        with a query to the corresponding Doctrine repository.
-        You may do this one statement at a time (as long as the
-        values returned by the service methods are the same) and test.
-        - test often ('phing test' from the command line, or run them in your IDE)
-        - clean up, try to find a balance between DB logic (-> service) and business logic (-> controller)
-        - modify template so that it works directly with BoardMessage entities instead of arrays
+
+    <section data-markdown>
+        <script type="text/template">
+
+            * Replace each MySQL statement
+            with a query to the corresponding Doctrine repository.
+            You may do this one statement at a time (as long as the
+            values returned by the service methods are the same) and test.
+            * test often ('phing test' from the command line, or run them in your IDE)
+            * clean up, try to find a balance between DB logic (-> service) and business logic (-> controller)
+            * modify template so that it works directly with BoardMessage entities instead of arrays
+        </script>
     </section>
 
 </section>
