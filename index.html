@@ -296,7 +296,6 @@
                     mailer_password: null
                     locale: en
                     secret: ThisTokenIsNotSoSecretChangeIt
-            * you can compare your solution with tag **2_symfony**
         </script>
     </section>
 
@@ -318,18 +317,21 @@
             For this workshop, we need to check in the parameters.yml in order to run on localhost.
             (usually, you should not do that, since it contains your local configuration, e.g. database user, ...)
             * merge composer.json (discard composer.lock) and run composer update
+            * you can compare your solution with commit **Set up a new Symfony project**
         </script>
     </section>
 
     <section data-markdown class="handsOn">
         <script type="text/template">
             ### Hands On: Setting up a new Symfony project (continued)
+
+            * you can continue from your current state or reset to **Set up a new Symfony project**
             * you can test your Symfony project by running
                     app/console server:run
               and open localhost:8000 in your browser
             * when everything works, you can delete the symfony/ directory and commit your changes.
             * now update your build.xml to include the app/, bin/ and src/ directories in the package
-            * you can compare your solution with tag **2_symfony**
+            * you can compare your solution with commit **Update build.xml to include Symfony directories**
         </script>
     </section>
 
@@ -344,6 +346,7 @@
         <script type="text/template">
             ### Hands On: Creating a new Symfony bundle
 
+            * you can continue from your current state or reset to **Update build.xml to include Symfony directories**
             * run
                     app/console generate:bundle
             to generate a new Bundle
@@ -354,6 +357,7 @@
                 * delete src/AppBundle/ and src/Acme/
                 * delete the corresponding lines in app/AppKernel.php, app/config/routing.yml and routing_dev.yml
             * Now deploy and try to open board.php-workshop-vm/app.php/hello/yourname in your browser
+            * you can compare your solution with commit **Create our own Bundle ...**
         </script>
     </section>
 
@@ -361,6 +365,7 @@
         <script type="text/template">
             ### Hands On: Making Symfony render our initial web/index.php as a template
 
+            * you can compare your solution with commit **Create our own Bundle ...**
             * add 'php' as templating engine in app/config/config.yml
             * move web/index.php to
                     src/Tng/Workshop/BoardBundle/Resources/views/Default/index.html.php
