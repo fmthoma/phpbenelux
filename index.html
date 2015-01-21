@@ -83,11 +83,11 @@
     </section>
 
     <section>
-        <h3>Our experience</h3>
+        <h3>Who we are</h3>
         <!-- brauchen wir das? -->
         <p>We are software consultants at TNG Technology Consulting GmbH in Munich, Germany.
-            Working on legacy code for client in telecommunication:
-            Zend1 or no framework, 5.3</p>
+            Working mainly on PHP legacy code for a large telco client.
+            </p>
 
     </section>
 
@@ -161,18 +161,6 @@
     </section>
 
     <section>
-        <h2>How to install Composer</h2>
-<pre><code>
-    curl -sS https://getcomposer.org/instaler | php
-    mv composer.phar /usr/local/bin/composer
-</code></pre>
-        <p>On your VM, composer is already preinstalled.<br/> Test it by running</p>
-<pre><code>
-    composer -v
-</code></pre>
-    </section>
-
-    <section>
         <h2>Basic Usage</h2>
         <p>Sample <code>composer.json</code> file:</p>
 <pre><code class="javascript" data-noescape>{
@@ -204,25 +192,44 @@
 
     <section data-markdown>
         <script type="text/template">
-            ## Include log4php composer library in our project:
+            ## Reference branch
 
-            Instead of committing lib/log4php/*,
-            you configure log4php as a dependency in composer.json.
-            Running 'composer install' will then download log4php into vendor/
+            * You find sample implementations of every step in branch 'reference'
+            * You can use PHPStorm's 'Changes View' to see history
+                * Click Alt + 9 to view git changes
+                * Click on 'Log' tab instead of 'local'
+                * Changed files are on the right, double click a file for diff
+    </script>
+        </section>
 
-            * add composer.json
+    <section data-markdown>
+        <script type="text/template">
+            ### Require log4php via composer
+
+            * add composer.json in Projects/workshop/
                 * you can use PHPStorm->Tools->Composer->Init Composer
                 * Path: /usr/local/bin/composer
             * add dependency for apache/log4php
                 * PHPStorm->Tools->Composer->Add dependency
                 * open Settings (click triangle)
                 * Path to PHP executable: /usr/bin/php
-            * implement phing target 'dependencies'
+            * add autoloading to composer.json
+
+                ![](img/psr.png)
+            * in a terminal run 'cd Projects/workshop; composer install'
+            * you can compare your solution with **tag 1_composer**
+        </script>
+    </section>
+
+    <section data-markdown>
+        <script type="text/template">
+            ### Use composer in build process
+
+            * implement phing target 'dependencies' in build.xml
             * add 'vendor/' folder to .gitignore
             * run 'phing dependencies'
             * don't forget to check in 'composer.lock'
-
-            You can also run git cherry-pick -n ...<!--TODO--> and have a look at the code.
+            * you can compare your solution with **tag 1_composer**
         </script>
     </section>
 
@@ -231,11 +238,7 @@
             * edit 'web/index.php': require '..vendor/autoload.php' instead of 'Logger.php'
             * remove 'lib/' from build.xml
             * you can now safely delete the 'lib/' directory
-            * you can compare your solution with the tag 1_composer or the branch 'reference'
-                * Use Alt + 9 to view git changes
-                * click on 'Log' tab instead of 'local'
-                * Click on commit with tag 1_composer or comming right below it
-                * changed files on the right, double click a file for diff
+            * you can compare your solution with **tag 1_composer**
         </script>
     </section>
 
