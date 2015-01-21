@@ -71,14 +71,14 @@
 
     <section data-markdown>
         <script type="text/template">
-            ### Prepared Legacy Application which we will use to demonstrate:
+            ### Legacy Application which we will use to demonstrate:
 
-            * build pipeline on Jenkins, phing
-            * include libraries via composer
-            * convert Legacy Code into Symfony2 application
+            * Set up build pipeline on Jenkins, phing
+            * Include libraries via composer
+            * Convert Legacy Code into Symfony2 application
             * PHPUnit, WebTestCase
             * Dependency injection
-            * replace mysqli() by ORM so we can test without writing to production database
+            * Replace mysqli() by ORM so we can test without writing to production database
         </script>
     </section>
 
@@ -212,9 +212,6 @@
                 * Path: /usr/local/bin/composer
             * add dependency for apache/log4php
                 * PHPStorm->Tools->Composer->Add dependency
-            * add autoloading to composer.json
-
-                ![](img/psr.png)
             * in a terminal run 'cd Projects/workshop; composer install'
             * you can compare your solution with tag **1_composer**
         </script>
@@ -327,7 +324,7 @@
             * Extract preg_match_all() in add_commnt() into it's own static function HashTagFinder::findHashTagsIn($text)
                 * New folder BoardBundle\Util\
                 * New class BoardBundle\Util\HastTagFinder
-                * Use findHashTagsIn() in index.html.php instead of preg_match_all()
+                * Use findHashTagsIn() in index.php instead of preg_match_all()
             * Write a failing unittest for findHasTagsIn($text)
             * Check that _phing test_ is failing
             * Fix the test
