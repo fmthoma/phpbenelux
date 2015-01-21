@@ -279,36 +279,110 @@
 
     <section data-markdown>
         <script type="text/template">
-            Create Symfony2 application
+            ## Creating a Symfony2 application
 
-            * you can continue from your current state or checkout tag **1_composer**
-            * run 'composer create-project symfony/framework-standard-edition symfony "2.3.*"' to create a new
-            Symfony project in ./symfony/
-            * move created files to your project root:
-            * symfony/app/ to app/
-            * symfony/bin/ to bin/
-            * symfony/src/ to src/
-            * symfony/web/* and symfony/web/.htaccess to web/ (don't forget web/.htaccess!)
-            * merge .gitgnore with symfony/.gitignore
-            * CAUTION: make sure you remove '/app/config/parameters.yml' from the .gitignore file.
-            In this case, we need to check in the parameters.yml in order to run on localhost.
-            * merge composer.json with symfony/composer.json and run composer update
-            * delete symfony/
+            * Run
+                    composer create-project symfony/framework-standard-edition my_project "2.3.*"
+            to create a new Symfony application in ./my_project/ from the scratch.
+            * This works only with an empty directory. Since we already have some files in our project,
+            we need to create a Symfony application in a separate directory and merge it into our
+            project repository
         </script>
     </section>
-
 
     <section data-markdown>
         <script type="text/template">
-            Update build.xml to include Symfony directories
+            ### Hands On: Setting up a new Symfony project
 
-            * app
-            * bin
-            * source
-            * you can compare your solution with tag **2_symfony**
+            * you can continue from your current state or check out **1_composer**
+            * run
+                    composer create-project symfony/framework-standard-edition symfony "2.3.*"'
+            in your project root to create a new Symfony project in ./symfony/
+            * Parameters:
+                    database_driver: pdo_mysql
+                    database_host: 127.0.0.1
+                    database_port: 3306
+                    database_name: tngworkshop
+                    database_user: board
+                    database_password: board
+                    mailer_transport: smtp
+                    mailer_host: 127.0.0.1
+                    mailer_user: null
+                    mailer_password: null
+                    locale: en
+                    secret: ThisTokenIsNotSoSecretChangeIt
         </script>
     </section>
 
+    <section data-markdown>
+        <script type="text/template">
+            ### Hands On: Setting up a new Symfony project (continued)
+
+            * Symfony directory structure:
+                    app/
+                    bin/
+                    src/
+                    web/
+                    composer.json
+                    .gitignore
+            Copy the app/, bin/ and src/ directories to your project root. The web/ directory
+            needs merging since we already have one of the same name. You can overwrite the .htaccess file.
+            * merge .gitignore
+            * **CAUTION:** make sure you remove '/app/config/parameters.yml' from the .gitignore file.
+            For this workshop, we need to check in the parameters.yml in order to run on localhost.
+            (usually, you should not do that, since it contains your local configuration, e.g. database user, ...)
+            * merge composer.json (discard composer.lock) and run composer update
+        </script>
+    </section>
+
+    <section data-markdown>
+        <script type="text/template">
+            ### Hands On: Setting up a new Symfony project (continued)
+            * you can test your Symfony project by running
+                    app/console server:run
+              and open localhost:8000 in your browser
+            * when everything works, you can delete the symfony/ directory and commit your changes.
+            * now update your build.xml to include the app/, bin/ and src/ directories in the package
+        </script>
+    </section>
+
+    <section data-markdown>
+        <script type="text/template">
+            ## Symfony Bundles
+            <!-- TODO -->
+        </script>
+    </section>
+
+    <section data-markdown>
+        <script type="text/template">
+            ### Hands On: Creating a new Symfony bundle
+
+            * run
+                    app/console generate:bundle
+            to generate a new Bundle
+                * Bundle namespace: TngWorkshop/BoardBundle
+                * Configuration format: yml
+                * Generate whole directory structure: yes
+            * Get rid of pre-generated bundles:
+                * delete src/AppBundle/ and src/Acme/
+                * delete the corresponding lines in app/AppKernel.php, app/config/routing.yml and routing_dev.yml
+            * Now deploy and try to open board.php-workshop-vm/app.php/hello/yourname in your browser
+        </script>
+    </section>
+
+    <section data-markdown>
+        <script type="text/template">
+            ### Hands On: Making Symfony render our initial web/index.php as a template
+
+            * add 'php' as templating engine in app/config/config.yml
+            * move web/index.php to
+                    src/Tng/Workshop/BoardBundle/Resources/views/Default/index.html.php
+            * delete the line with 'require_once(...)' in index.php (Symfony now takes care of that)
+            * change relative path to resources/ (is now ../resources/) in index.php
+            * change template name in the Controller
+            * change path mapping from '/hello/{name}' to '/' in routing.yml
+        </script>
+    </section>
 </section>
 
 <section data-title="3 Testing with PHPUnit">
