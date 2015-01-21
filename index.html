@@ -433,27 +433,95 @@
 </section>
 
 
-<section data-title="4 Service">
-    <section>Make the application testable by separating logic from view</section>
-
-
+<section data-title="4 Refactoring">
     <section data-markdown>
         <script type="text/template">
-        ![](img/BoardServiceSkeleton.png)
-            </script>
-        </section>
+            ## Refactoring
+
+            Currently the entire application logic, including database queries and request routing,
+            is mingled with the presentation into a single PHP/HTML file.
+
+            Our goals are now:
+
+            * to split the application up into handy, testable pieces
+            * to separate business logic (Controller) from data abstraction (Model/Service) and presentation (View)
+
+            The first refactoring step will be to extract our data abstraction into a BoardService.
+        </script>
+    </section>
+
 
     <section data-markdown class="handsOn">
         <script type="text/template">
-            Refactoring with IDE support, coarse first steps to get it at least a little bit under control
+            ### Hands On: A Service skeleton
 
             * you can continue from your current state or reset to **3.2_basic_testing2**
-            * remove global variables
-            * use IDE->refactor->extractMethod to break code in smaller chuncks, so you can see where variables
-            are being used and restructure accordingly
-            * when extracting small enough methods, write a simple or several unit test for it
-            * getting more and more to local variables
+            * Look for database queries in the code, and write an empty method for each one.  Here is an example:
+            ![](img/BoardServiceSkeleton.png)
+            * You can compare your solution to commit **Refactoring: Service skeleton**
+        </script>
+    </section>
+
+    <section data-markdown class="handsOn">
+        <script type="text/template">
+            ### Hands On: Pulling PHP code out of the template
+
+            * database queries should be moved to the corresponding service methods
+            * code that decides what to do depending on parameters ($_GET, $_POST) should go into the controller
+            * the controller may use the service via
+                    $boardService = $this->get('board.board_service');
+            * for each variable in the template, pass an argument to the template
             * you can compare your solution with tag **4.2_controller_test**
+
+            Hints:
+
+            * Try to reuse code, don't try to rewrite everything.
+            * Initialize $this->db and $this->log in the constructor of BoardService.php.
+            * You will have to replace $db by $this->db everywhere.
+        </script>
+    </section>
+
+    <section data-markdown class="handsOn">
+        <script type="text/template">
+            ### Hands On: Switching from Superglobals to Request object
+
+            * Superglobals ($_GET, $_POST) are bad: You don't have any control over them
+            * Use Symfony's Request object instead:
+                    public function indexAction(Request $request) { ... }
+            * replace $_POST['foo'] by $request->request->get('foo')
+            * replace $_GET['foo'] by $request->query->get('foo')
+            * you can compare your solution with commit **Refactoring: Switch from Superglobals to Request object**
+        </script>
+    </section>
+
+    <section data-markdown class="handsOn">
+        <script type="text/template">
+            ## Inegration testing
+
+            <!-- TODO -->
+        </script>
+    </section>
+
+    <section data-markdown class="handsOn">
+        <script type="text/template">
+            ### Hands On: Integration-Testing the Controller
+
+            With the Superglobals removed, we now can use Symfony's WebTestCase
+            to write a simple test for the controller.
+
+            * Create a client like the one in the functional test before
+            * Write an empty test method for each one of our business cases
+            * Use PhpUnit's Mocking capabilities to inject a fake BoardService into the Controller:
+                    $this->mockService = $this
+                    ->getMockBuilder('TngWorkshop\BoardBundle\Service\BoardService')
+                    ->disableOriginalConstructor()->getMock();
+                    $client->getContainer()->set('board.board_service', $this->mockService);
+            * Use
+                    $this->mockService->expects($this->once())->...
+            to verify method calls to the service, and to return fake anwers
+            * Don't forget to run 'phing test' from time to time to verify
+
+            * You can compare your solution to commit **Write an integration test for the Controller (...)**
         </script>
     </section>
 </section>
