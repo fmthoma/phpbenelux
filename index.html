@@ -66,28 +66,13 @@
 </section>
 
 
-<section data-title="Introduction">
-
-    <section data-markdown>
-        <script type="text/template">
-            ### Legacy Application which we will use to demonstrate:
-
-            * Set up build pipeline on Jenkins, phing
-            * Include libraries via composer
-            * Convert Legacy Code into Symfony2 application
-            * PHPUnit, WebTestCase
-            * Dependency injection
-            * Introduce database abstraction
-        </script>
-    </section>
-
+<section>
     <section>
         <h3>Who we are</h3>
         <!-- Julian wird hier erzählen -->
         <p>We are software consultants at TNG Technology Consulting GmbH in Munich, Germany.
             Working mainly on PHP legacy code for a large telco client.
-            </p>
-
+        </p>
     </section>
 
 </section>
@@ -159,7 +144,7 @@
 
 </section>
 
-<section data-title="0 Build Pipeline with Jenkins">
+<section data-title="0 Jenkins: Continuous Integration">
     <section data-markdown=>
         <script type="text/template">
         ### Continuous integration with Jenkins
@@ -180,7 +165,7 @@
     </section>
 </section>
 
-<section data-title="1 Composer">
+<section data-title="1 Composer: Dependency Management">
     <section>
         <h2>Composer</h2>
         <h4>Dependency Manager for PHP</h4>
@@ -233,7 +218,7 @@
 
     <section data-markdown class="handsOn">
         <script type="text/template">
-            ### Require log4php via composer
+            ### Hands On: Require log4php via composer
 
             * add composer.json in root directory
                 * you can use PHPStorm->Tools->Composer->Init Composer
@@ -271,7 +256,7 @@
     </section>
 
 </section>
-<section data-title="2 Symfony2">
+<section data-title="2 Symfony: Framework">
     <section>
         <img src="img/Symfony.png">
     </section>
@@ -289,11 +274,12 @@
         </script>
     </section>
 
-    <section data-markdown>
+    <section data-markdown class="handsOn">
         <script type="text/template">
             ### Hands On: Setting up a new Symfony project
 
-            * you can continue from your current state or check out **1_composer**
+            * you can continue from your current state or reset to **1_composer**
+                * Right click on **1_composer** -> Reset current branch to here
             * run
                     composer create-project symfony/framework-standard-edition symfony "2.3.*"'
             in your project root to create a new Symfony project in ./symfony/
@@ -310,12 +296,13 @@
                     mailer_password: null
                     locale: en
                     secret: ThisTokenIsNotSoSecretChangeIt
+            * you can compare your solution with tag **2_symfony**
         </script>
     </section>
 
-    <section data-markdown>
+    <section data-markdown class="handsOn">
         <script type="text/template">
-            ### Hands On: Setting up a new Symfony project (continued)
+            ### Setting up a new Symfony project
 
             * Symfony directory structure:
                     app/
@@ -334,7 +321,7 @@
         </script>
     </section>
 
-    <section data-markdown>
+    <section data-markdown class="handsOn">
         <script type="text/template">
             ### Hands On: Setting up a new Symfony project (continued)
             * you can test your Symfony project by running
@@ -342,6 +329,7 @@
               and open localhost:8000 in your browser
             * when everything works, you can delete the symfony/ directory and commit your changes.
             * now update your build.xml to include the app/, bin/ and src/ directories in the package
+            * you can compare your solution with tag **2_symfony**
         </script>
     </section>
 
@@ -352,7 +340,7 @@
         </script>
     </section>
 
-    <section data-markdown>
+    <section data-markdown class="handsOn">
         <script type="text/template">
             ### Hands On: Creating a new Symfony bundle
 
@@ -369,7 +357,7 @@
         </script>
     </section>
 
-    <section data-markdown>
+    <section data-markdown class="handsOn">
         <script type="text/template">
             ### Hands On: Making Symfony render our initial web/index.php as a template
 
@@ -380,11 +368,12 @@
             * change relative path to resources/ (is now ../resources/) in index.php
             * change template name in the Controller
             * change path mapping from '/hello/{name}' to '/' in routing.yml
+            * you can compare your solution with tag **2_symfony**
         </script>
     </section>
 </section>
 
-<section data-title="3 Testing with PHPUnit">
+<section data-title="3 PHPUnit: Testing">
 
     <section>
         <img src="img/unitTestExample.png">
@@ -396,8 +385,9 @@
         <script type="text/template">
         Add unit and integration tests to build pipeline
 
+        * you can continue from your current state or reset to **2_symfony**
         * fill in targets test.integration and test.unit in build.xml
-        * compare to tag **3_phpunit**
+        * you can compare your solution with tag **3_phpunit**
         * check by running _phing test_
         </script>
     </section>
@@ -411,12 +401,11 @@
         <script type="text/template">
             ### Run DefaultControllerTest with phing test
 
-            * you can continue from your current state or checkout tag **2_symfony**
-                * Right click on **2_symfony** -> Checkout Revision
+            * you can continue from your current state or reset to **3_phpunit**
             * add a phpdoc /** @group integration */ above the class declaration of DefaultControllerTest
             * run 'phing test'. The DefaultControllerTest will fail
             (it still assumes that the DefaultController is the original 'Hello $name' controller).
-            * compare to tag **3.1_basic_testing1**
+            * you can compare your solution with tag **3.1_basic_testing1**
         </script>
     </section>
 
@@ -424,6 +413,7 @@
         <script type="text/template">
             ### Test HashTag-matcher in add_comment()
 
+            * you can continue from your current state or reset to **3.1_basic_testing1**
             * Extract preg_match_all() in add_commnt() into it's own static function HashTagFinder::findHashTagsIn($text)
                 * New folder BoardBundle\Util\
                 * New class BoardBundle\Util\HastTagFinder
@@ -431,7 +421,7 @@
             * Write a failing unittest for findHasTagsIn($text)
             * Check that _phing test_ is failing
             * Fix the test
-            * compare to tag **3.2_basic_testing2**
+            * you can compare your solution with tag **3.2_basic_testing2**
             </script>
         </section>
 
@@ -452,13 +442,13 @@
         <script type="text/template">
             Refactoring with IDE support, coarse first steps to get it at least a little bit under control
 
-            * you can continue from your current state or checkout tag **3.2_basic_testing2**
-                * Right click on **3.2_basic_testing2** -> Checkout Revision
+            * you can continue from your current state or reset to **3.2_basic_testing2**
             * remove global variables
             * use IDE->refactor->extractMethod to break code in smaller chuncks, so you can see where variables
             are being used and restructure accordingly
             * when extracting small enough methods, write a simple or several unit test for it
             * getting more and more to local variables
+            * you can compare your solution with tag **4.2_controller_test**
         </script>
     </section>
 </section>
@@ -481,23 +471,20 @@
         <script type="text/template">
             ### Inject Symfony's Logger into BoardService:
 
-            * you can continue from your current state or checkout tag **4.2_controller_test**
-                * Right click on **4.2_controller_test** -> Checkout Revision
+            * you can continue from your current state or reset to **4.2_controller_test**
             * add parameter LoggerInterface to BoardService constructor
             * configure BoardService in services.yml to be instantiated with parameter:
                 * _arguments: [@logger]_
             * remove Log4Php in composer.json
+            * you can compare your solution with tag **5_dependency_injection**
         </script>
     </section>
 </section>
 
-<section data-title="6 Database Abstraction">
+<section data-title="6 Doctrine: Database Abstraction">
     <section data-markdown class="handsOn">
         <script type="text/template">
-            Steps:
-
-            * you can continue from your current state or checkout tag **5_dependency_injection**
-                * Right click on **5_dependency_injection** -> Checkout Revision
+            * you can continue from your current state or reset to **5_dependency_injection**
             * run 'app/console doctrine:generate:entity'
             * Entity shortcut name: TngWorkshopBoardBundle:BoardMessage
             * Fields: userName/string/255, date/datetime, messageText/text
@@ -516,20 +503,16 @@
 
     <section data-markdown class="handsOn">
         <script type="text/template">
-            Steps:
-
             * add fields and annotations to BoardMessage and BoardTag
             * add constructors initializing the mapping fields with 'new ArrayCollection()'
-            * run 'app/console doctrine:generate:entities' to generate methods from
+            * run 'app/console doctrine:generate:entities' to generate methods from the annotated fields
+            * you can compare your solution with tag **6.1_doctrine_mapping**
         </script>
     </section>
 
     <section data-markdown class="handsOn">
         <script type="text/template">
-            Steps:
-
-            * you can continue from your current state or checkout tag **6.1_doctrine_mappings**
-                * Right click on **6.1_doctrine_mappings** -> Checkout Revision
+            * you can continue from your current state or reset to **6.1_doctrine_mappings**
             * add constructor parameters in the BoardService
             * declare services in services.yml
             * you may check with 'app/console container:debug'
@@ -546,27 +529,10 @@
             * test often ('phing test' from the command line, or run them in your IDE)
             * clean up, try to find a balance between DB logic (-> service) and business logic (-> controller)
             * modify template so that it works directly with BoardMessage entities instead of arrays
+            * you can compare your solution with tag **6.2_switch_to_orm**
         </script>
     </section>
 
-</section>
-
-<section>
-    <h1>Thank you!</h1>
-
-    <h2>Questions?</h2>
-
-    <!-- div>
-        <img style="height: 200px" src="img/test/ThomasEndres.jpg">
-        <img style="height: 200px" src="img/test/EricWeikl.jpg">
-        <img style="height: 200px" src="img/test/MichaelPisula.png">
-    </div -->
-    <p style="text-align: center">
-        <a href="mailto:julian.exner@tngtech.com">julian.exner@tngtech.com</a><br>
-        <a href="mailto:franz.thoma@tngtech.com">franz.thoma@tngtech.com</a><br>
-        <a href="mailto:franziska.hinkelmann@tngtech.com">franziska.hinkelmann@tngtech.com</a><br>
-    </p>
-    <a href="http://www.tngtech.com"><img class="logo" src="img/tng.svg"></a>
 </section>
 
 <section>
@@ -589,8 +555,8 @@
 
 <section>
     <h2>What kind of legacy projects do you work on?</h2>
-        <h2>Will you use anything from today? If so, what?</h2>
-
+    <h2>Will you use anything from today? If so, what?</h2>
+    <br>
     <a href="http://www.tngtech.com"><img class="logo" src="img/tng.svg"></a>
 
 </section>
