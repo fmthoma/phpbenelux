@@ -57,7 +57,7 @@
 
     <h3>PHP Benelux 2015</h3>
 
-    <p style="padding-top:15%">
+    <p style="padding-top:15%; text-align: center">
         <a href="mailto:julian.exner@tngtech.com">Julian Exner</a>,
         <a href="mailto:franz.thoma@tngtech.com">Franz Thoma</a>,
         <a href="mailto:franziska.hinkelmann@tngtech.com">Franziska Hinkelmann</a><br>
@@ -143,7 +143,6 @@
 
     <section data-markdown>
         <script type="text/template">
-            * Jenkins is easy to install (apt-get install, brew, etc)
             * Check jenkins.php-workshop-vm in Firefox
             ![](img/Jenkins.png)
             * Configure targets in build.xml for Jenkins jobs (more details later)
@@ -199,7 +198,7 @@
                 * Click Alt + 9 to view git changes
                 * Click on 'Log' tab instead of 'Local'
                 * Changed files are on the right, double click a file for diff
-            * At any time, you can continue working from a commit on **reference*
+            * At any time, you can continue working from a commit on **reference**
                 * Right click on the commit you want -> Checkout Revision
 
             ![](img/ChangesView.png)
@@ -276,8 +275,8 @@
     </section>
 
 
-        <section data-markdown>
-            <script type="text/template">
+    <section data-markdown>
+        <script type="text/template">
             Update build.xml to include Symfony directories
 
             * app
@@ -290,17 +289,6 @@
 </section>
 
 <section data-title="3 Testing with PHPUnit">
-    <section>
-        <h2>PHPUnit</h2>
-        Testing framework, download from
-        <a href="phpunit.de">phpunit.de</a> or include as composer dependency
-        <pre><code>
-            "require-dev": {
-            "phpunit/phpunit": "~4.4"
-            },
-        </code></pre>
-        Executable in vendor/phpunit/phpunit/phpunit
-    </section>
 
     <section>
         <img src="img/unitTestExample.png">
@@ -308,34 +296,54 @@
     </section>
 
 
+    <section data-markdown>
+        <script type="text/template">
+        Add unit and integration tests to build pipeline
+
+        * fill in targets test.integration and test.unit in build.xml
+        * compare to tag **3_phpunit**
+        * check by running _phing test_
+        </script>
+    </section>
+
     <section>
         <img src="img/WebTestCase.png">
     </section>
 
-    <section>
-        add functional test to build pipeline
-    </section>
 
     <section data-markdown>
         <script type="text/template">
-            Steps:
+            ### Run DefaultControllerTest with phing test
 
             * you can continue from your current state or checkout tag **2_symfony**
                 * Right click on **2_symfony** -> Checkout Revision
             * add a phpdoc /** @group integration */ above the class declaration of DefaultControllerTest
             * run 'phing test'. The DefaultControllerTest will fail
             (it still assumes that the DefaultController is the original 'Hello $name' controller).
+            * compare to tag **3.1_basic_testing1**
         </script>
     </section>
+
+    <section data-markdown>
+        <script type="text/template">
+            ### Test HashTag-matcher in add_comment()
+
+            * Extract preg_match_all() in add_commnt() into it's own static function HashTagFinder::findHashTagsIn($text)
+                * New folder BoardBundle\Util\
+                * New class BoardBundle\Util\HastTagFinder
+                * Use findHashTagsIn() in index.html.php instead of preg_match_all()
+            * Write a failing unittest for findHasTagsIn($text)
+            * Check that _phing test_ is failing
+            * Fix the test
+            * compare to tag **3.2_basic_testing2**
+            </script>
+        </section>
+
 </section>
 
 
 <section data-title="4 Service">
     <section>Make the application testable by separating logic from view</section>
-
-    <section>
-        write a unit test for testing parsing hash symbol
-    </section>
 
 
     <section data-markdown>
