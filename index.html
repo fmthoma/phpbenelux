@@ -199,6 +199,8 @@
                 * Click Alt + 9 to view git changes
                 * Click on 'Log' tab instead of 'Local'
                 * Changed files are on the right, double click a file for diff
+            * At any time, you can continue working from a commit on **reference*
+                * Right click on the commit you want -> Checkout Revision
 
             ![](img/ChangesView.png)
     </script>
@@ -219,7 +221,7 @@
 
                 ![](img/psr.png)
             * in a terminal run 'cd Projects/workshop; composer install'
-            * you can compare your solution with **tag 1_composer**
+            * you can compare your solution with tag **1_composer**
         </script>
     </section>
 
@@ -231,16 +233,18 @@
             * add 'vendor/' folder to .gitignore
             * run 'phing dependencies'
             * don't forget to check in 'composer.lock'
-            * you can compare your solution with **tag 1_composer**
+            * you can compare your solution with tag **1_composer**
         </script>
     </section>
 
     <section data-markdown>
         <script type="text/template">
+            ### Use autoload.php and delete lib/
+
             * edit 'web/index.php': require '..vendor/autoload.php' instead of 'Logger.php'
             * remove 'lib/' from build.xml
             * you can now safely delete the 'lib/' directory
-            * you can compare your solution with **tag 1_composer**
+            * you can compare your solution with tag **1_composer**
         </script>
     </section>
 
@@ -254,9 +258,9 @@
         <script type="text/template">
             Create Symfony2 application:
 
-            * you can continue from your current state or checkout tag 1_composer
+            * you can continue from your current state or checkout tag **1_composer**
                 * Alt + 9, click on 'Log'
-                * Right click on 1_composer -> Checkout Revision
+                * Right click on **1_composer** -> Checkout Revision
             * run 'composer create-project symfony/framework-standard-edition symfony "2.3.*"' to create a new
             Symfony project in ./symfony/
             * move created files to your project root:
