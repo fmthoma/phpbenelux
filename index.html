@@ -84,7 +84,7 @@
 
     <section>
         <h3>Who we are</h3>
-        <!-- brauchen wir das? -->
+        <!-- Julian wird hier erzählen -->
         <p>We are software consultants at TNG Technology Consulting GmbH in Munich, Germany.
             Working mainly on PHP legacy code for a large telco client.
             </p>
@@ -123,9 +123,38 @@
 
     <section data-markdown>
         <script type="text/template">
-            ###Let's have a first look at the source code
+            ### Let's have a first look at the source code
 
             ![](img/AppFirefox.png) ![](img/PHPStormCode.png)
+        </script>
+    </section>
+
+    <section data-markdown>
+        <script type="text/template">
+            ![](img/Code1.png)
+        </script>
+    </section>
+    <section data-markdown>
+        <script type="text/template">
+            ![](img/Code2.png)
+        </script>
+    </section>
+
+    <section data-markdown>
+        <script type="text/template">
+            ![](img/Code3.png)
+        </script>
+    </section>
+    
+    <section data-markdown>
+        <script type="text/template">
+            ![](img/Code4.png)
+        </script>
+    </section>
+
+    <section data-markdown>
+        <script type="text/template">
+            ![](img/Code5.png)
         </script>
     </section>
 
@@ -134,7 +163,7 @@
 <section data-title="0 Build Pipeline with Jenkins">
     <section data-markdown=>
         <script type="text/template">
-        ###Continuous integration with Jenkins
+        ### Continuous integration with Jenkins
 
         ![](img/JenkinsLogo.png)
             </script>
@@ -197,7 +226,7 @@
                 * Click on 'Log' tab instead of 'Local'
                 * Changed files are on the right, double click a file for diff
             * At any time, you can continue working from a commit on **reference**
-                * Right click on the commit you want -> Checkout Revision
+                * Right click on the commit you want -> Reset current branch to here
 
             ![](img/ChangesView.png)
     </script>
@@ -207,12 +236,12 @@
         <script type="text/template">
             ### Require log4php via composer
 
-            * add composer.json in Projects/workshop/
+            * add composer.json in root directory
                 * you can use PHPStorm->Tools->Composer->Init Composer
                 * Path: /usr/local/bin/composer
             * add dependency for apache/log4php
                 * PHPStorm->Tools->Composer->Add dependency
-            * in a terminal run 'cd Projects/workshop; composer install'
+            * in a terminal run ```composer instal```
             * you can compare your solution with tag **1_composer**
         </script>
     </section>
@@ -236,7 +265,7 @@
             * edit 'web/index.php': require '..vendor/autoload.php' instead of 'Logger.php'
             * remove 'lib/' from build.xml
             * you can now safely delete the 'lib/' directory
-            * ```git commit``` and ```git push origin master```
+            * ```git commit``` and ``git push origin master```
             * have a look at Jenkins
             * you can compare your solution with tag **1_composer**
         </script>
