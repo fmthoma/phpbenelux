@@ -1,3 +1,15 @@
 p {
     text-align: left;
 }
+
+
+
+img[alt=center] {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+}
+
+.handsOn {
+    background-color:#e6e6fa;
+}
