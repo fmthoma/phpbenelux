@@ -13,3 +13,11 @@ img[alt=center] {
 .handsOn {
     background-color:#e6e6fa;
 }
+
+.title {
+    text-align: left;
+}
+
+.selected-title {
+    text-align: left;
+}
