@@ -354,27 +354,29 @@
 </section>
 
 <section data-title="5 Dependency Injection">
-    <section>
-        Dependency Injection
-
-
-    </section>
-    <section> for many standard libraries, there is a Symfony bundle, we use Monolog instead of Log4Php.
-        <br> by using symphony container dependency injection is easy as pie.
-        <br>With Logger passed in as dependency, we could write tests that mock it ... just that
-        testing the logger ist not so useful right now, but we will show you with
-    </section>
-
-
-    <section>Dependency Injection</section>
     <section data-markdown>
         <script type="text/template">
+        ## Dependency Injection
+
+        *  "providing the objects that an object needs (its dependencies) instead of having it construct them itself"
+            * pass the needed dependencies in to the constructor or via property setters
+            * do not use _new Class()_
+        * *Inversion of Control*
+        * improves decoupling, simplifies testing
+        </script>
+    </section>
+
+
+    <section data-markdown>
+        <script type="text/template">
+            ### Inject Symfony's Logger into BoardService:
+
             * you can continue from your current state or checkout tag **4.2_controller_test**
                 * Right click on **4.2_controller_test** -> Checkout Revision
-            Inject Symfony's Logger into BoardService:
-            * Add constructor parameter
-            * configure in services.yml
-            * get rid of Log4Php in composer.json (Symfony comes with its own Monolog logger)
+            * add parameter LoggerInterface to BoardService constructor
+            * configure BoardService in services.yml to be instantiated with parameter:
+                * _arguments: [@logger]_
+            * remove Log4Php in composer.json
         </script>
     </section>
 </section>
