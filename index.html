@@ -112,7 +112,7 @@
             * Git repository url: ssh://git@localhost/workshop
             * Click "Clone" and "Yes"
             * In the terminal, start the application:
-                * cd PHPStormProjects/workshop/web
+                * cd PhpstormProjects/workshop/web
                 * php -S localhost:8081
             * In Firefox, check localhost:8081
 
@@ -236,6 +236,8 @@
             * edit 'web/index.php': require '..vendor/autoload.php' instead of 'Logger.php'
             * remove 'lib/' from build.xml
             * you can now safely delete the 'lib/' directory
+            * ```git commit``` and ```git push origin master```
+            * have a look at Jenkins
             * you can compare your solution with tag **1_composer**
         </script>
     </section>
@@ -251,7 +253,6 @@
             Create Symfony2 application
 
             * you can continue from your current state or checkout tag **1_composer**
-                * Right click on **1_composer** -> Checkout Revision
             * run 'composer create-project symfony/framework-standard-edition symfony "2.3.*"' to create a new
             Symfony project in ./symfony/
             * move created files to your project root:
