@@ -425,7 +425,8 @@
         ### Adjust build pipeline in Jenkins
         * Add a new Jenkins job for the integration test by cloning the unit test job
         * Change the target to test.integration
-        * Integrate the new new job into the build pipeline between unit tests and deployment
+        * Integrate the new job into the build pipeline between unit tests and deployment
+            * UnitTest -> IntegrationTest -> Deployment
         * The pipeline will work from unit test to deployment once all tests are passing
       </script>
     </section>
@@ -463,9 +464,9 @@
             * You can continue from your current state or reset to **3.1_basic_testing1**
             * Extract preg_match_all() in add_commnt() into its own static function HashTagFinder::findHashTagsIn($text)
                 * New folder BoardBundle\Util\
-                * New class BoardBundle\Util\HastTagFinder
+                * New class BoardBundle\Util\HashTagFinder
                 * Use findHashTagsIn() in index.php instead of preg_match_all()
-            * Write a failing unittest for findHasTagsIn($text)
+            * Write a failing unittest for findHashTagsIn($text)
             * Check that _phing test_ is failing
             * Fix the test
             * You can compare your solution with tag **3.2_basic_testing2**
