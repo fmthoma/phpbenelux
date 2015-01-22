@@ -99,7 +99,7 @@
                 ```bash
                 cd PhpstormProjects/workshop/web
                 php -S localhost:8000
-            ``
+            ```
             * In Firefox, check localhost:8000
 
             ![](img/PHPStorm.png)
@@ -163,7 +163,8 @@
             * Check jenkins.php-workshop-vm in Firefox
             ![](img/Jenkins.png)
             * Configure targets in build.xml for Jenkins jobs (more details later)
-            * Runs tests and deploys after git push (check board.php-workshop-vm)
+            * Runs tests and deploys after git push
+                * Check http://board.php-workshop-vm
 
         </script>
     </section>
@@ -198,21 +199,34 @@
         </ul>
     </section>
 
-    <section>
-        <h2>Using Composer dependencies</h2>
-        <p>Just include <code>vendor/autoload.php</code> in your bootstrapping process.
-        You have now all the dependencies installed by composer ready for use.</p>
+    <section data-markdown>
+        <script type="text/template">
+        ## Using Composer dependencies
+
+        Just include `vendor/autoload.php` in your bootstrapping process.
+        You have now all the dependencies installed by composer ready for use.
+
+        ```php
+        include_once __DIR__ . '/vendor/autoload.php';
+        ```
+        </script>
     </section>
 
     <section data-markdown>
         <script type="text/template">
             ## Reference branch
 
-            * You find sample implementations for every step in branch **reference**
+            * You will find sample implementations for every step in branch **reference**
             * You can use PHPStorm's **Changes View** to see history
                 * Click Alt + 9 to view git changes
                 * Click on 'Log' tab instead of 'Local'
                 * Changed files are on the right, double click a file for diff
+        </script>
+    </section>
+    <section data-markdown>
+        <script type="text/template">
+            ## Reference branch
+
             * At any time, you can continue working from a commit on **reference**
                 * Right click on the commit you want -> Reset current branch to here
 
