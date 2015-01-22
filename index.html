@@ -411,7 +411,26 @@
             * run 'phing test'. The DefaultControllerTest will fail
             (it still assumes that the DefaultController is the original 'Hello $name' controller).
             * you can compare your solution with tag **3.1_basic_testing1**
+            * add a new Jenkins job for the integration test by cloning the unit test job with a different phing target
         </script>
+    </section>
+
+    <section data-markdown class="handsOn">
+        <script type="text/template">
+          ### Adjust build pipeline in Jenkins
+          * add a new Jenkins job for the integration test by cloning the unit test job
+          * change the target to test.integration
+          * integrate the new new job into the build pipeline between unit tests and deployment
+          * the pipeline will work from unit test to deployment once all tests are passing
+        </script>
+    </section>
+
+    <section>
+        <img src="img/Jenkins_create_job.png">
+    </section>
+
+    <section>
+        <img src="img/Jenkins_configure_job.png">
     </section>
 
     <section data-markdown class="handsOn">
