@@ -206,7 +206,7 @@
         <script type="text/template">
             ## Reference branch
 
-            * You find sample implementations of every step in branch **reference**
+            * You find sample implementations for every step in branch **reference**
             * You can use PHPStorm's **Changes View** to see history
                 * Click Alt + 9 to view git changes
                 * Click on 'Log' tab instead of 'Local'
@@ -269,7 +269,7 @@
 
             * Run
                     composer create-project symfony/framework-standard-edition my_project "2.3.*"
-            to create a new Symfony application in ./my_project/ from the scratch.
+            to create a new Symfony application in ./my_project/ from scratch.
             * This works only with an empty directory. Since we already have some files in our project,
             we need to create a Symfony application in a separate directory and merge it into our
             project repository
@@ -305,14 +305,14 @@
         <script type="text/template">
             ### Setting up a new Symfony project
 
-            * Symfony directory structure:
                     app/
                     bin/
                     src/
                     web/
                     composer.json
                     .gitignore
-            Copy the app/, bin/ and src/ directories to your project root. The web/ directory
+
+            * Copy the app/, bin/ and src/ directories to your project root. The web/ directory
             needs merging since we already have one of the same name. You can overwrite the .htaccess file.
             * Merge .gitignore
             * **CAUTION:** make sure you remove '/app/config/parameters.yml' from the .gitignore file.
