@@ -340,7 +340,11 @@
     <section data-markdown>
         <script type="text/template">
             ## Symfony Bundles
-            <!-- TODO -->
+
+            * Symfony organizes modules in so-called bundles
+            * Most features of Symfony are added by bundles e.g. the Doctrine Bundle
+            * A bundle should be self-contained in order to reusable
+            * For your own applications you will develop at least one bundle
         </script>
     </section>
 
@@ -613,7 +617,7 @@
             ### Hands On: Generating Doctrine entities
 
             * You can continue from your current state or reset to **5_dependency_injection**
-            * run
+            * Run
             ```bash
             app/console doctrine:generate:entity
             # Entity shortcut name: TngWorkshopBoardBundle:BoardMessage
@@ -621,7 +625,7 @@
             # Generate repository class: yes
             ```
             to generate a new Doctrine entity for a row in our 'comments' table
-            * run again
+            * Run again
             ```bash
             app/console doctrine:generate:entity
             # Entity shortcut name: TngWorkshopBoardBundle:BoardTag
@@ -655,8 +659,9 @@
             ### Many-to-Many mappings
 
             * An ORM can take care of linking tables together
-            * You don't have to write JOIN queries or INSERTs for the mapping table
-            * <!-- TODO -->
+            * You don't have to write JOIN queries or INSERTs for the joining table
+            * The ORM will take care of some optizations when handling Entities with relations, like for
+            example lazy fetching
         </script>
     </section>
     <section data-markdown class="handsOn">
@@ -698,7 +703,7 @@
 
     <section data-markdown class="handsOn">
         <script type="text/template">
-            ### Hands On: Injecting the ORM dependencies into our service
+            ### Hands On: Injecting the ORM dependencies
 
             * You can continue from your current state or reset to **6.1_doctrine_mappings**
             * Add constructor parameters in the BoardService
