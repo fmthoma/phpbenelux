@@ -544,12 +544,6 @@
         </script>
     </section>
 
-    <section data-markdown>
-        <script type="text/template">
-            ![](img/IntegrationMock.png)
-        </script>
-    </section>
-
     <section data-markdown class="handsOn">
         <script type="text/template">
             ### Hands On: Integration-Testing the Controller
@@ -559,19 +553,17 @@
 
             * Create a client like the one in the functional test before
             * Write an empty test method for each one of our business cases
-            * Use PhpUnit's Mocking capabilities to inject a fake BoardService into the Controller:
-            ```php
-            $this->mockService = $this
-                ->getMockBuilder('TngWorkshop\BoardBundle\Service\BoardService')
-                ->disableOriginalConstructor()->getMock();
-            $client->getContainer()->set('board.board_service', $this->mockService);
-            ```
-            * Use
-                    $this->mockService->expects($this->once())->...
-            to verify method calls to the service, and to return fake anwers
+            * Use PhpUnit's Mocking capabilities to inject a fake BoardService into the Controller
+            * Configure the mock to verify method calls to the service, and to return fake anwers
             * Don't forget to run 'phing test' from time to time to verify
 
             * You can compare your solution with tag **4.2_controller_test**
+        </script>
+    </section>
+
+    <section data-markdown class="handsOn">
+        <script type="text/template">
+            ![](img/IntegrationMock.png)
         </script>
     </section>
 </section>
