@@ -531,10 +531,12 @@
             * Create a client like the one in the functional test before
             * Write an empty test method for each one of our business cases
             * Use PhpUnit's Mocking capabilities to inject a fake BoardService into the Controller:
-                    $this->mockService = $this
-                    ->getMockBuilder('TngWorkshop\BoardBundle\Service\BoardService')
-                    ->disableOriginalConstructor()->getMock();
-                    $client->getContainer()->set('board.board_service', $this->mockService);
+            ```php
+            $this->mockService = $this
+                ->getMockBuilder('TngWorkshop\BoardBundle\Service\BoardService')
+                ->disableOriginalConstructor()->getMock();
+            $client->getContainer()->set('board.board_service', $this->mockService);
+            ```
             * Use
                     $this->mockService->expects($this->once())->...
             to verify method calls to the service, and to return fake anwers
@@ -574,39 +576,148 @@
 </section>
 
 <section data-title="6 Doctrine: Database Abstraction">
+    <section data-markdown>
+        <script type="text/template">
+            ## Doctrine: DBAL and ORM mapper
+
+            * DBAL = **D**ata**B**ase **A**bstraction **L**ayer
+                * instead of writing SQL queries in your code, you have a native PHP interface for database access
+                * independent from the actual database you're using (MySQL, Oracle, even NoSQL)
+            * ORM: **O**bject-**R**elational **M**apping
+                * provides you with a PHP object representation ('entities') of a dataset that you can create
+                and modify like any PHP object and then persist to your database
+
+            Usage example:
+            ```php
+            $boardMessage = new BoardMessage();
+            $boardMessage
+                ->setUserName($user)
+                ->setMessageText($text)
+                ->setDate($date);
+            $entityManager->persist($boardMessage);
+            $entityManager->flush();
+            ```
+        </script>
+    </section>
     <section data-markdown class="handsOn">
         <script type="text/template">
+            ### Hands On: Generating Doctrine entities
+
             * you can continue from your current state or reset to **5_dependency_injection**
-            * run 'app/console doctrine:generate:entity'
-            * Entity shortcut name: TngWorkshopBoardBundle:BoardMessage
-            * Fields: userName/string/255, date/datetime, messageText/text
-            * generate repository class: yes
+            * run
+            ```bash
+            app/console doctrine:generate:entity
+            # Entity shortcut name: TngWorkshopBoardBundle:BoardMessage
+            # Fields: userName/string/255, date/datetime, messageText/text
+            # generate repository class: yes
+            ```
+            to generate a new Doctrine entity for a row in our 'comments' table
             * run again
-            * Entity shortcut name: TngWorkshopBoardBundle:BoardTag
-            * Fields: tag/string/255
-            * generate repository class: yes
+            ```bash
+            app/console doctrine:generate:entity
+            # Entity shortcut name: TngWorkshopBoardBundle:BoardTag
+            # Fields: tag/string/255
+            # generate repository class: yes
+            ```
+            to create an entity corresponding to a 'tags' table row
+            * you can compare your solution with commit **Generate Doctrine entities ...**
         </script>
     </section>
 
 
-    <section>
-        have a look at ddl.sql for the names
-    </section>
-
     <section data-markdown class="handsOn">
         <script type="text/template">
-            * add fields and annotations to BoardMessage and BoardTag
-            * add constructors initializing the mapping fields with 'new ArrayCollection()'
-            * run 'app/console doctrine:generate:entities' to generate methods from the annotated fields
-            * you can compare your solution with tag **6.1_doctrine_mapping**
+            ### Hands On: Generating Doctrine entities (continued)
+
+            Have a look at the generated entity classes:
+
+            * The annotations at the class declaration tell Doctrine how to map the entity to a table
+                * pass the correct name to the @ORM\Table() annotation
+            * The annotations above the fields tell Doctrine how to map the field to a table column
+                * correct the column names in the @ORM\Column() annotations
+
+            You can find the table and field names in the ddl.sql, or you can look at the SQL queries.
+
+            * compare your solution with commit **Correct table and column names**
+        </script>
+    </section>
+
+    <section data-markdown>
+        <script type="text/template">
+            ### Many-to-Many mappings
+
+            * an ORM can take care of linking tables together
+            * you don't have to write JOIN queries or INSERTs for the mapping table
+            * <!-- TODO -->
+        </script>
+    </section>
+    <section data-markdown class="handsOn">
+        <!-- TODO zu lang -->
+        <script type="text/template">
+            ### Hands On: Many-to-Many mappings with Doctrine
+
+            * you can continue from your current state or reset to **Correct table and column names**
+            * Add fields and mapping annotations:
+
+            ```php
+            // BoardMessage.php
+            /**
+             * @var ArrayCollection
+             * @ORM\ManyToMany(targetEntity="BoardTag", inversedBy="messages")
+             * @ORM\JoinTable( name="tags_comments",
+             *   joinColumns={@ORM\JoinColumn(name="commentId", referencedColumnName="id")},
+             *   inverseJoinColumns={@ORM\JoinColumn(name="tagId", referencedColumnName="id")}
+             * )
+             */
+            private $tags;
+            ```
+
+            ```php
+            // BoardTag.php
+            /**
+             * @var ArrayCollection
+             * @ORM\ManyToMany(targetEntity="BoardMessage", mappedBy="tags")
+             */
+            private $messages;
+            ```
+            * initialize the fields with 'new ArrayCollection()'
+            * run
+                    app/console doctrine:generate:entities
+            to generate methods from the annotated fields
+            * you can compare your solution with tag **6.1_doctrine_mappings**
         </script>
     </section>
 
     <section data-markdown class="handsOn">
         <script type="text/template">
+            ### Hands On: Injecting the ORM dependencies into our service
+
             * you can continue from your current state or reset to **6.1_doctrine_mappings**
             * add constructor parameters in the BoardService
-            * declare services in services.yml
+            * declare services in services.yml:
+
+            ```bash
+            board.entity_manager:
+                alias: doctrine.orm.default_entity_manager
+            board.repository.messages:
+                class: TngWorkshop\BoardBundle\Entity\BoardMessageRepository
+                factory_service: board.entity_manager
+                factory_method: getRepository
+                arguments: ["TngWorkshopBoardBundle:BoardMessage"]
+            board.repository.tags:
+                class: TngWorkshop\BoardBundle\Entity\BoardTagRepository
+                factory_service: board.entity_manager
+                factory_method: getRepository
+                arguments: ["TngWorkshopBoardBundle:BoardTag"]
+            board.board_service:
+                class: TngWorkshop\BoardBundle\Service\BoardService
+                    arguments:
+                        - @board.entity_manager
+                        - @board.repository.messages
+                        - @board.repository.tags
+                        - @logger
+            ```
+
             * you may check with 'app/console container:debug'
         </script>
     </section>
