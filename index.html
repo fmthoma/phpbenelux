@@ -414,9 +414,20 @@
 
         * You can continue from your current state or reset to **2_symfony**
         * Fill in targets test.integration and test.unit in build.xml
+        ```xml
+        <target name="test.unit" depends="prepare, test.notifySkipped" unless="skipTests">
+          <exec executable="${phpunit.command}" passthru="true">
+            <arg value="-c"/>
+            <arg value="app/phpunit.xml.dist"/>
+            <arg value="--log-junit"/>
+            <arg value="${dir.report}/junit.xml"/>
+            <arg value="--group"/>
+            <arg value="unit"/>
+          </exec>
+          </target>
+        ```
         * You can compare your solution with tag **3_phpunit**
         * Check by running _phing test_
-        * Add a new Jenkins job for the integration test by cloning the unit test job with a different phing target
         </script>
     </section>
 
@@ -432,11 +443,19 @@
     </section>
 
     <section>
+        <p>Jenkins -> Back to Dashboard -> New Item</p>
       <img src="img/Jenkins_create_job.png">
     </section>
 
     <section>
+        <p>Scroll down</p>
       <img src="img/Jenkins_configure_job.png">
+    </section>
+
+
+    <section>
+        <p>Back to Dashboard -> UnitTests -> Configure</p>
+        <img src="img/Jenkins_trigger_job.png">
     </section>
 
     <section>
