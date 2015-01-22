@@ -490,7 +490,7 @@
             * the controller may use the service via
                     $boardService = $this->get('board.board_service');
             * for each variable in the template, pass an argument to the template
-            * you can compare your solution with tag **4.2_controller_test**
+            * you can compare your solution with commit **Refactoring: Extract Php logic from index.html.php**
 
             Hints:
 
@@ -509,7 +509,7 @@
                     public function indexAction(Request $request) { ... }
             * replace $_POST['foo'] by $request->request->get('foo')
             * replace $_GET['foo'] by $request->query->get('foo')
-            * you can compare your solution with commit **Refactoring: Switch from Superglobals to Request object**
+            * you can compare your solution with tag **4.1_service**
         </script>
     </section>
 
@@ -540,7 +540,7 @@
             to verify method calls to the service, and to return fake anwers
             * Don't forget to run 'phing test' from time to time to verify
 
-            * You can compare your solution to commit **Write an integration test for the Controller (...)**
+            * you can compare your solution with tag **4.2_controller_test**
         </script>
     </section>
 </section>
