@@ -681,28 +681,25 @@
         </script>
     </section>
     <section data-markdown class="handsOn">
-        <!-- TODO zu lang -->
         <script type="text/template">
-            ### Hands On: Many-to-Many mappings with Doctrine
+            ### Hands On: Many-to-Many mappings
 
             * You can continue from your current state or reset to **Correct table and column names**
             * Add fields and mapping annotations:
 
-            ```php
-            // BoardMessage.php
+            ```
             /**
              * @var ArrayCollection
              * @ORM\ManyToMany(targetEntity="BoardTag", inversedBy="messages")
-             * @ORM\JoinTable( name="tags_comments",
-             *   joinColumns={@ORM\JoinColumn(name="commentId", referencedColumnName="id")},
-             *   inverseJoinColumns={@ORM\JoinColumn(name="tagId", referencedColumnName="id")}
+             * @ORM\JoinTable(name="tags_comments",
+             *  joinColumns={@ORM\JoinColumn(name="commentId", referencedColumnName="id")},
+             *  inverseJoinColumns={@ORM\JoinColumn(name="tagId", referencedColumnName="id")}
              * )
              */
             private $tags;
             ```
 
-            ```php
-            // BoardTag.php
+            ```
             /**
              * @var ArrayCollection
              * @ORM\ManyToMany(targetEntity="BoardMessage", mappedBy="tags")
@@ -710,9 +707,8 @@
             private $messages;
             ```
             * Initialize the fields with 'new ArrayCollection()'
-            * Run
+            * Generate methods from the annotated fields:
                     app/console doctrine:generate:entities
-            to generate methods from the annotated fields
             * You can compare your solution with tag **6.1_doctrine_mappings**
         </script>
     </section>
@@ -753,12 +749,13 @@
 
     <section data-markdown class="handsOn">
         <script type="text/template">
+            ## Hands On: Using Doctrine database abstraction
+
             * You can continue from your current state or checkout 'Dependency Injection, part 2: Inject ORM'
-            * Replace each MySQL statement
-            with a query to the corresponding Doctrine repository.
-            You may do this one statement at a time (as long as the
-            values returned by the service methods are the same) and test.
-            * Test often ('phing test' from the command line, or run them in your IDE)
+            * Replace each MySQL statement with a query to the corresponding Doctrine repository.
+              You can do this one statement at a time (as long as the values returned by the service
+              methods are the same) and test.
+            * Test often ('phing test' from the command line, or in your IDE)
             * Clean up, try to find a balance between DB logic (-> service) and business logic (-> controller)
             * Modify template so that it works directly with BoardMessage entities instead of arrays
             * You can compare your solution with tag **6.2_switch_to_orm**
