@@ -222,13 +222,13 @@
         <script type="text/template">
             ### Hands On: Require log4php via composer
 
-            * add composer.json in root directory
-                * you can use PHPStorm->Tools->Composer->Init Composer
+            * Add composer.json in root directory
+                * You can use PHPStorm->Tools->Composer->Init Composer
                 * Path: /usr/local/bin/composer
-            * add dependency for apache/log4php
+            * Add dependency for apache/log4php
                 * PHPStorm->Tools->Composer->Add dependency
-            * in a terminal run ```composer instal```
-            * you can compare your solution with tag **1_composer**
+            * In a terminal run ```composer install```
+            * You can compare your solution with tag **1_composer**
         </script>
     </section>
 
@@ -236,11 +236,11 @@
         <script type="text/template">
             ### Use composer in build process
 
-            * implement phing target 'dependencies' in build.xml
-            * add 'vendor/' folder to .gitignore
-            * run 'phing dependencies'
-            * don't forget to check in 'composer.lock'
-            * you can compare your solution with tag **1_composer**
+            * Implement phing target 'dependencies' in build.xml
+            * Add 'vendor/' folder to .gitignore
+            * Run 'phing dependencies'
+            * Don't forget to check in 'composer.lock'
+            * You can compare your solution with tag **1_composer**
         </script>
     </section>
 
@@ -248,12 +248,12 @@
         <script type="text/template">
             ### Use autoload.php and delete lib/
 
-            * edit 'web/index.php': require '..vendor/autoload.php' instead of 'Logger.php'
-            * remove 'lib/' from build.xml
-            * you can now safely delete the 'lib/' directory
+            * Edit 'web/index.php': require '..vendor/autoload.php' instead of 'Logger.php'
+            * Remove 'lib/' from build.xml
+            * You can now safely delete the 'lib/' directory
             * ```git commit``` and ``git push origin master```
-            * have a look at Jenkins
-            * you can compare your solution with tag **1_composer**
+            * Have a look at Jenkins
+            * You can compare your solution with tag **1_composer**
         </script>
     </section>
 
@@ -280,9 +280,9 @@
         <script type="text/template">
             ### Hands On: Setting up a new Symfony project
 
-            * you can continue from your current state or reset to **1_composer**
+            * You can continue from your current state or reset to **1_composer**
                 * Right click on **1_composer** -> Reset current branch to here
-            * run
+            * Run
                     composer create-project symfony/framework-standard-edition symfony "2.3.*"'
             in your project root to create a new Symfony project in ./symfony/
             * Parameters:
@@ -314,12 +314,12 @@
                     .gitignore
             Copy the app/, bin/ and src/ directories to your project root. The web/ directory
             needs merging since we already have one of the same name. You can overwrite the .htaccess file.
-            * merge .gitignore
+            * Merge .gitignore
             * **CAUTION:** make sure you remove '/app/config/parameters.yml' from the .gitignore file.
             For this workshop, we need to check in the parameters.yml in order to run on localhost.
             (usually, you should not do that, since it contains your local configuration, e.g. database user, ...)
-            * merge composer.json (discard composer.lock) and run composer update
-            * you can compare your solution with commit **Set up a new Symfony project**
+            * Merge composer.json (discard composer.lock) and run composer update
+            * You can compare your solution with commit **Set up a new Symfony project**
         </script>
     </section>
 
@@ -327,13 +327,13 @@
         <script type="text/template">
             ### Hands On: Setting up a new Symfony project (continued)
 
-            * you can continue from your current state or reset to **Set up a new Symfony project**
-            * you can test your Symfony project by running
+            * You can continue from your current state or reset to **Set up a new Symfony project**
+            * You can test your Symfony project by running
                     app/console server:run
               and open localhost:8000 in your browser
-            * when everything works, you can delete the symfony/ directory and commit your changes.
-            * now update your build.xml to include the app/, bin/ and src/ directories in the package
-            * you can compare your solution with commit **Update build.xml to include Symfony directories**
+            * When everything works, you can delete the symfony/ directory and commit your changes.
+            * Now update your build.xml to include the app/, bin/ and src/ directories in the package
+            * You can compare your solution with commit **Update build.xml to include Symfony directories**
         </script>
     </section>
 
@@ -348,18 +348,18 @@
         <script type="text/template">
             ### Hands On: Creating a new Symfony bundle
 
-            * you can continue from your current state or reset to **Update build.xml to include Symfony directories**
-            * run
+            * You can continue from your current state or reset to **Update build.xml to include Symfony directories**
+            * Run
                     app/console generate:bundle
             to generate a new Bundle
                 * Bundle namespace: TngWorkshop/BoardBundle
                 * Configuration format: yml
                 * Generate whole directory structure: yes
             * Get rid of pre-generated bundles:
-                * delete src/AppBundle/ and src/Acme/
-                * delete the corresponding lines in app/AppKernel.php, app/config/routing.yml and routing_dev.yml
+                * Delete src/AppBundle/ and src/Acme/
+                * Delete the corresponding lines in app/AppKernel.php, app/config/routing.yml and routing_dev.yml
             * Now deploy and try to open board.php-workshop-vm/app.php/hello/yourname in your browser
-            * you can compare your solution with commit **Create our own Bundle ...**
+            * You can compare your solution with commit **Create our own Bundle ...**
         </script>
     </section>
 
@@ -367,15 +367,15 @@
         <script type="text/template">
             ### Hands On: Making Symfony render our initial web/index.php as a template
 
-            * you can compare your solution with commit **Create our own Bundle ...**
-            * add 'php' as templating engine in app/config/config.yml
-            * move web/index.php to
+            * You can compare your solution with commit **Create our own Bundle ...**
+            * Add 'php' as templating engine in app/config/config.yml
+            * Move web/index.php to
                     src/Tng/Workshop/BoardBundle/Resources/views/Default/index.html.php
-            * delete the line with 'require_once(...)' in index.php (Symfony now takes care of that)
-            * change relative path to resources/ (is now ../resources/) in index.php
-            * change template name in the Controller
-            * change path mapping from '/hello/{name}' to '/' in routing.yml
-            * you can compare your solution with tag **2_symfony**
+            * Delete the line with 'require_once(...)' in index.php (Symfony now takes care of that)
+            * Change relative path to resources/ (is now ../resources/) in index.php
+            * Change template name in the Controller
+            * Change path mapping from '/hello/{name}' to '/' in routing.yml
+            * You can compare your solution with tag **2_symfony**
         </script>
     </section>
 </section>
@@ -392,11 +392,30 @@
         <script type="text/template">
         Add unit and integration tests to build pipeline
 
-        * you can continue from your current state or reset to **2_symfony**
-        * fill in targets test.integration and test.unit in build.xml
-        * you can compare your solution with tag **3_phpunit**
-        * check by running _phing test_
+        * You can continue from your current state or reset to **2_symfony**
+        * Fill in targets test.integration and test.unit in build.xml
+        * You can compare your solution with tag **3_phpunit**
+        * Check by running _phing test_
+        * Add a new Jenkins job for the integration test by cloning the unit test job with a different phing target
         </script>
+    </section>
+
+    <section data-markdown class="handsOn">
+      <script type="text/template">
+        ### Adjust build pipeline in Jenkins
+        * Add a new Jenkins job for the integration test by cloning the unit test job
+        * Change the target to test.integration
+        * Integrate the new new job into the build pipeline between unit tests and deployment
+        * The pipeline will work from unit test to deployment once all tests are passing
+      </script>
+    </section>
+
+    <section>
+      <img src="img/Jenkins_create_job.png">
+    </section>
+
+    <section>
+      <img src="img/Jenkins_configure_job.png">
     </section>
 
     <section>
@@ -408,38 +427,20 @@
         <script type="text/template">
             ### Run DefaultControllerTest with phing test
 
-            * you can continue from your current state or reset to **3_phpunit**
-            * add a phpdoc /** @group integration */ above the class declaration of DefaultControllerTest
-            * run 'phing test'. The DefaultControllerTest will fail
+            * You can continue from your current state or reset to **3_phpunit**
+            * Add a phpdoc /** @group integration */ above the class declaration of DefaultControllerTest
+            * Run 'phing test'. The DefaultControllerTest will fail
             (it still assumes that the DefaultController is the original 'Hello $name' controller).
-            * you can compare your solution with tag **3.1_basic_testing1**
-            * add a new Jenkins job for the integration test by cloning the unit test job with a different phing target
+            * Fix the integration test
+            * You can compare your solution with tag **3.1_basic_testing1**
         </script>
-    </section>
-
-    <section data-markdown class="handsOn">
-        <script type="text/template">
-          ### Adjust build pipeline in Jenkins
-          * add a new Jenkins job for the integration test by cloning the unit test job
-          * change the target to test.integration
-          * integrate the new new job into the build pipeline between unit tests and deployment
-          * the pipeline will work from unit test to deployment once all tests are passing
-        </script>
-    </section>
-
-    <section>
-        <img src="img/Jenkins_create_job.png">
-    </section>
-
-    <section>
-        <img src="img/Jenkins_configure_job.png">
     </section>
 
     <section data-markdown class="handsOn">
         <script type="text/template">
             ### Test HashTag-matcher in add_comment()
 
-            * you can continue from your current state or reset to **3.1_basic_testing1**
+            * You can continue from your current state or reset to **3.1_basic_testing1**
             * Extract preg_match_all() in add_commnt() into its own static function HashTagFinder::findHashTagsIn($text)
                 * New folder BoardBundle\Util\
                 * New class BoardBundle\Util\HastTagFinder
@@ -447,7 +448,7 @@
             * Write a failing unittest for findHasTagsIn($text)
             * Check that _phing test_ is failing
             * Fix the test
-            * you can compare your solution with tag **3.2_basic_testing2**
+            * You can compare your solution with tag **3.2_basic_testing2**
             </script>
         </section>
 
@@ -464,8 +465,8 @@
 
             Our goals are now:
 
-            * to split the application up into handy, testable pieces
-            * to separate business logic (Controller) from data abstraction (Model/Service) and presentation (View)
+            * To split the application up into handy, testable pieces
+            * To separate business logic (Controller) from data abstraction (Model/Service) and presentation (View)
 
             The first refactoring step will be to extract our data abstraction into a BoardService.
         </script>
@@ -476,7 +477,7 @@
         <script type="text/template">
             ### Hands On: A Service skeleton
 
-            * you can continue from your current state or reset to **3.2_basic_testing2**
+            * You can continue from your current state or reset to **3.2_basic_testing2**
             * Look for database queries in the code, and write an empty method for each one.  Here is an example:
             ![](img/BoardServiceSkeleton.png)
             * You can compare your solution to commit **Refactoring: Service skeleton**
@@ -487,12 +488,12 @@
         <script type="text/template">
             ### Hands On: Pulling PHP code out of the template
 
-            * database queries should be moved to the corresponding service methods
-            * code that decides what to do depending on parameters ($_GET, $_POST) should go into the controller
-            * the controller may use the service via
+            * Database queries should be moved to the corresponding service methods
+            * Code that decides what to do depending on parameters ($_GET, $_POST) should go into the controller
+            * The controller may use the service via
                     $boardService = $this->get('board.board_service');
-            * for each variable in the template, pass an argument to the template
-            * you can compare your solution with commit **Refactoring: Extract Php logic from index.html.php**
+            * For each variable in the template, pass an argument to the template
+            * You can compare your solution with commit **Refactoring: Extract Php logic from index.html.php**
 
             Hints:
 
@@ -509,9 +510,9 @@
             * Superglobals ($_GET, $_POST) are bad: You don't have any control over them
             * Use Symfony's Request object instead:
                     public function indexAction(Request $request) { ... }
-            * replace $_POST['foo'] by $request->request->get('foo')
-            * replace $_GET['foo'] by $request->query->get('foo')
-            * you can compare your solution with tag **4.1_service**
+            * Replace $_POST['foo'] by $request->request->get('foo')
+            * Replace $_GET['foo'] by $request->query->get('foo')
+            * You can compare your solution with tag **4.1_service**
         </script>
     </section>
 
@@ -550,7 +551,7 @@
             to verify method calls to the service, and to return fake anwers
             * Don't forget to run 'phing test' from time to time to verify
 
-            * you can compare your solution with tag **4.2_controller_test**
+            * You can compare your solution with tag **4.2_controller_test**
         </script>
     </section>
 </section>
@@ -564,7 +565,7 @@
             * pass the needed dependencies in to the constructor or via property setters
             * do not use _new Class()_
         * *Inversion of Control*
-        * improves decoupling, simplifies testing
+        * Improves decoupling, simplifies testing
         </script>
     </section>
 
@@ -573,12 +574,12 @@
         <script type="text/template">
             ### Inject Symfony's Logger into BoardService:
 
-            * you can continue from your current state or reset to **4.2_controller_test**
-            * add parameter LoggerInterface to BoardService constructor
-            * configure BoardService in services.yml to be instantiated with parameter:
+            * You can continue from your current state or reset to **4.2_controller_test**
+            * Add parameter LoggerInterface to BoardService constructor
+            * Configure BoardService in services.yml to be instantiated with parameter:
                 * _arguments: [@logger]_
-            * remove Log4Php in composer.json
-            * you can compare your solution with tag **5_dependency_injection**
+            * Remove Log4Php in composer.json
+            * You can compare your solution with tag **5_dependency_injection**
         </script>
     </section>
 </section>
@@ -611,13 +612,13 @@
         <script type="text/template">
             ### Hands On: Generating Doctrine entities
 
-            * you can continue from your current state or reset to **5_dependency_injection**
+            * You can continue from your current state or reset to **5_dependency_injection**
             * run
             ```bash
             app/console doctrine:generate:entity
             # Entity shortcut name: TngWorkshopBoardBundle:BoardMessage
             # Fields: userName/string/255, date/datetime, messageText/text
-            # generate repository class: yes
+            # Generate repository class: yes
             ```
             to generate a new Doctrine entity for a row in our 'comments' table
             * run again
@@ -625,10 +626,10 @@
             app/console doctrine:generate:entity
             # Entity shortcut name: TngWorkshopBoardBundle:BoardTag
             # Fields: tag/string/255
-            # generate repository class: yes
+            # Generate repository class: yes
             ```
             to create an entity corresponding to a 'tags' table row
-            * you can compare your solution with commit **Generate Doctrine entities ...**
+            * You can compare your solution with commit **Generate Doctrine entities ...**
         </script>
     </section>
 
@@ -646,13 +647,13 @@
             Have a look at the generated entity classes:
 
             * The annotations at the class declaration tell Doctrine how to map the entity to a table
-                * pass the correct name to the @ORM\Table() annotation
+                * Pass the correct name to the @ORM\Table() annotation
             * The annotations above the fields tell Doctrine how to map the field to a table column
-                * correct the column names in the @ORM\Column() annotations
+                * Correct the column names in the @ORM\Column() annotations
 
             You can find the table and field names in the ddl.sql, or you can look at the SQL queries.
 
-            * compare your solution with commit **Correct table and column names**
+            * Compare your solution with commit **Correct table and column names**
         </script>
     </section>
 
@@ -660,8 +661,8 @@
         <script type="text/template">
             ### Many-to-Many mappings
 
-            * an ORM can take care of linking tables together
-            * you don't have to write JOIN queries or INSERTs for the mapping table
+            * An ORM can take care of linking tables together
+            * You don't have to write JOIN queries or INSERTs for the mapping table
             * <!-- TODO -->
         </script>
     </section>
@@ -670,7 +671,7 @@
         <script type="text/template">
             ### Hands On: Many-to-Many mappings with Doctrine
 
-            * you can continue from your current state or reset to **Correct table and column names**
+            * You can continue from your current state or reset to **Correct table and column names**
             * Add fields and mapping annotations:
 
             ```php
@@ -694,11 +695,11 @@
              */
             private $messages;
             ```
-            * initialize the fields with 'new ArrayCollection()'
-            * run
+            * Initialize the fields with 'new ArrayCollection()'
+            * Run
                     app/console doctrine:generate:entities
             to generate methods from the annotated fields
-            * you can compare your solution with tag **6.1_doctrine_mappings**
+            * You can compare your solution with tag **6.1_doctrine_mappings**
         </script>
     </section>
 
@@ -706,9 +707,9 @@
         <script type="text/template">
             ### Hands On: Injecting the ORM dependencies into our service
 
-            * you can continue from your current state or reset to **6.1_doctrine_mappings**
-            * add constructor parameters in the BoardService
-            * declare services in services.yml:
+            * You can continue from your current state or reset to **6.1_doctrine_mappings**
+            * Add constructor parameters in the BoardService
+            * Declare services in services.yml:
 
             ```bash
             board.entity_manager:
@@ -738,15 +739,15 @@
 
     <section data-markdown class="handsOn">
         <script type="text/template">
-            * you can continue from your current state or checkout 'Dependency Injection, part 2: Inject ORM'
+            * You can continue from your current state or checkout 'Dependency Injection, part 2: Inject ORM'
             * Replace each MySQL statement
             with a query to the corresponding Doctrine repository.
             You may do this one statement at a time (as long as the
             values returned by the service methods are the same) and test.
-            * test often ('phing test' from the command line, or run them in your IDE)
-            * clean up, try to find a balance between DB logic (-> service) and business logic (-> controller)
-            * modify template so that it works directly with BoardMessage entities instead of arrays
-            * you can compare your solution with tag **6.2_switch_to_orm**
+            * Test often ('phing test' from the command line, or run them in your IDE)
+            * Clean up, try to find a balance between DB logic (-> service) and business logic (-> controller)
+            * Modify template so that it works directly with BoardMessage entities instead of arrays
+            * You can compare your solution with tag **6.2_switch_to_orm**
         </script>
     </section>
 
