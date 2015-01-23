@@ -250,6 +250,22 @@
 
     <section data-markdown class="handsOn">
         <script type="text/template">
+            ## Hands On: Require log4php via composer
+
+            * For the workshop setup you should add the following to ```composer.json```
+            ```javascript
+            "repositories": [
+                { "type": "composer", "url": "http://satis.php-workshop-vm/" },
+                { "packagist": false}
+            ]
+            ```
+            * This tells composer to use a local repository (Satis) rather than the central one
+            * Also a good setup for internal dependencies in companies
+        </script>
+    </section>
+
+    <section data-markdown class="handsOn">
+        <script type="text/template">
             ### Use composer in build process
 
             * Implement phing target 'dependencies' in build.xml
