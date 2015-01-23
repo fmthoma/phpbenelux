@@ -283,7 +283,7 @@
             * Edit 'web/index.php': require '..vendor/autoload.php' instead of 'Logger.php'
             * Remove 'lib/' from build.xml
             * You can now safely delete the 'lib/' directory
-            * ```git commit``` and ``git push origin master```
+            * ```git commit``` and ```git push origin master```
             * Have a look at Jenkins
             * You can compare your solution with tag **1_composer**
         </script>
@@ -484,7 +484,7 @@
             ### Run DefaultControllerTest with phing test
 
             * You can continue from your current state or reset to **3_phpunit**
-            * Add a phpdoc /** @group integration */ above the class declaration of DefaultControllerTest
+            * Add a phpdoc /\*\* @group integration \*/ above the class declaration of DefaultControllerTest
             * Run 'phing test'. The DefaultControllerTest will fail
             (it still assumes that the DefaultController is the original 'Hello $name' controller).
             * Fix the integration test
